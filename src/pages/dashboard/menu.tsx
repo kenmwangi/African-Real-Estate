@@ -15,7 +15,11 @@ const initialInput = {
 
 const MenuPage = () => {
   const [input, setInput] = useState(initialInput);
-  return <div>MenuPage</div>;
+  return (
+    <div>
+      <p>Admin Dashboard Menu here</p>
+    </div>
+  );
 };
 
 export default MenuPage;
