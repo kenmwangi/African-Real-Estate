@@ -15,11 +15,7 @@ const HomePage: NextPage = () => {
   });
   return (
     <>
-      <main className="mx-auto grid min-h-screen place-items-center bg-gray-900 text-3xl text-white">
-        <button type="button" className="bg-slate-300 px-5 py-3 text-black">
-          <Link href="/login">Login to Admin</Link>
-        </button>
-        {/* {!date.dateTime && <Calendar setDate={setDate} date={date} />}
+      {/* {!date.dateTime && <Calendar setDate={setDate} date={date} />}
         {date.dateTime && true ? (
           <Menu />
         ) : (
@@ -27,7 +23,6 @@ const HomePage: NextPage = () => {
             <Spinner />
           </div>
         )} */}
-      </main>
     </>
   );
 };

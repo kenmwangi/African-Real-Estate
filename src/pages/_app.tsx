@@ -8,6 +8,15 @@ import { trpc } from "src/utils/trpc";
 import "../styles/globals.css";
 import "../styles/Calendar.css";
 import "../styles/Spinner.css";
+import Layout from "src/components/Layout";
+
+import { Inter } from "@next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-inter",
+});
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -15,7 +24,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <div className={`${inter.variable}`}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </div>
     </SessionProvider>
   );
 };
