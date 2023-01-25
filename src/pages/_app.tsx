@@ -10,9 +10,9 @@ import "../styles/Calendar.css";
 import "../styles/Spinner.css";
 import Layout from "src/components/Layout";
 
-import { Inter } from "@next/font/google";
+import { Open_Sans } from "@next/font/google";
 
-const inter = Inter({
+const inter = Open_Sans({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-inter",

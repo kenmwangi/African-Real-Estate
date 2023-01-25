@@ -14,8 +14,8 @@ const navLinks = [
 
 const Header = () => {
   return (
-    <div className="w-full">
-      <nav className="container relative mx-auto flex flex-wrap items-center justify-between p-8 lg:justify-between xl:px-0">
+    <div className="w-full shadow-sm">
+      <nav className="container relative mx-auto flex flex-wrap items-center justify-between p-4 lg:justify-between xl:px-0">
         {/* Logo  */}
         <Disclosure>
           {({ open }) => (
@@ -28,13 +28,13 @@ const Header = () => {
                   <span>
                     <Image
                       src={Logo}
-                      alt="N"
-                      width="32"
-                      height="32"
-                      className="w-8"
+                      alt="African Real Estate"
+                      width="72"
+                      height="72"
+                      className="w-20"
                     />
                   </span>
-                  <span>African Real Estate</span>
+                  {/* <span>African Real Estate</span> */}
                 </Link>
 
                 <Disclosure.Button
