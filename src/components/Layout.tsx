@@ -9,7 +9,9 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="flex min-h-screen flex-col font-sans antialiased">
       <Head>
-        <title>African Real Estate</title>
+        <title>
+          African Real Estate | Showing the Best of African Creativity
+        </title>
         <meta
           name="description"
           content="African Real Estate Hub. Showing the Best of African Creativity"

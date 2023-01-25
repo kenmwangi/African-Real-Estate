@@ -7,6 +7,7 @@ import Spinner from "../components/Spinner";
 import Menu from "../components/Menu";
 
 import { type DateType } from "src/utils/types";
+import Hero from "src/components/Hero";
 
 const HomePage: NextPage = () => {
   const [date, setDate] = useState<DateType>({
@@ -14,7 +15,8 @@ const HomePage: NextPage = () => {
     dateTime: null,
   });
   return (
-    <>
+    <div className="pb-40">
+      <Hero />
       {/* {!date.dateTime && <Calendar setDate={setDate} date={date} />}
         {date.dateTime && true ? (
           <Menu />
@@ -23,7 +25,7 @@ const HomePage: NextPage = () => {
             <Spinner />
           </div>
         )} */}
-    </>
+    </div>
   );
 };
 
