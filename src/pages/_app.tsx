@@ -10,9 +10,9 @@ import "../styles/Calendar.css";
 import "../styles/Spinner.css";
 import Layout from "src/components/Layout";
 
-import { Open_Sans } from "@next/font/google";
+import { Raleway } from "@next/font/google";
 
-const inter = Open_Sans({
+const inter = Raleway({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-inter",

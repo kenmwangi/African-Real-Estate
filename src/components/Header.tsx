@@ -15,7 +15,7 @@ const navLinks = [
 const Header = () => {
   return (
     <div className="w-full shadow-sm">
-      <nav className="container relative mx-auto flex flex-wrap items-center justify-between p-4 lg:justify-between xl:px-0">
+      <nav className="container relative mx-auto flex flex-wrap items-center justify-between lg:justify-between xl:px-0">
         {/* Logo  */}
         <Disclosure>
           {({ open }) => (
@@ -111,7 +111,7 @@ const Header = () => {
         <div className="nav__item mr-3 hidden space-x-3 lg:flex">
           <Link
             href="/"
-            className="text-md rounded-md bg-indigo-500 px-6 py-2 text-white transition-colors hover:bg-indigo-600 md:ml-5"
+            className="text-md rounded-md bg-indigo-500 px-8 py-2 font-bold tracking-[.5px] text-white transition-colors hover:bg-indigo-600 md:ml-5"
           >
             Sign In
           </Link>

@@ -4,6 +4,6 @@
 
 @layer base {
   body {
-    @apply font-sans font-normal leading-[1.7];
+    @apply font-sans font-normal;
   }
 }
