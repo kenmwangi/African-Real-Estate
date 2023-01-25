@@ -64,20 +64,23 @@ const Header = () => {
 
                 <Disclosure.Panel className="my-5 flex w-full flex-wrap lg:hidden">
                   <>
-                    {navLinks.map((item, index) => (
-                      <Link
-                        key={index}
-                        href="/"
-                        className="dark:focus:bg-trueGray-700 -ml-4 w-full rounded-md px-4 py-2 text-gray-500 hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-500 focus:outline-none dark:text-gray-300"
-                      >
-                        {item.title}
-                      </Link>
-                    ))}
+                    {navLinks.map((navLink) => {
+                      const { id, href, title } = navLink;
+                      return (
+                        <Link
+                          key={id}
+                          href={href}
+                          className="dark:focus:bg-trueGray-700 -ml-4 w-full rounded-md px-4 py-2 text-gray-500 hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-500 focus:outline-none dark:text-gray-300"
+                        >
+                          {title}
+                        </Link>
+                      );
+                    })}
                     <Link
                       href="/"
                       className="mt-3 w-full rounded-md bg-indigo-600 px-6 py-2 text-center text-white lg:ml-5"
                     >
-                      Get Started
+                      Sign In
                     </Link>
                   </>
                 </Disclosure.Panel>
@@ -89,16 +92,19 @@ const Header = () => {
         {/* menu  */}
         <div className="hidden text-center lg:flex lg:items-center">
           <ul className="flex-1 list-none items-center justify-end pt-6 lg:flex lg:pt-0">
-            {navLinks.map((menu, index) => (
-              <li className="nav__item mr-5" key={index}>
-                <Link
-                  href="/"
-                  className="inline-block rounded-md px-4 py-2 text-lg font-normal text-gray-800 no-underline hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-500 focus:outline-none dark:text-gray-100"
-                >
-                  {menu.title}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((navLink) => {
+              const { id, href, title } = navLink;
+              return (
+                <li className="nav__item mr-5" key={id}>
+                  <Link
+                    href={href}
+                    className="inline-block rounded-md px-4 py-2 text-lg font-normal text-gray-800 no-underline hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-500 focus:outline-none dark:text-gray-100"
+                  >
+                    {title}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
