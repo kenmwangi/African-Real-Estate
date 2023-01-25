@@ -19,7 +19,7 @@ const Hero = () => {
         <div className="relative mx-auto max-w-6xl pt-20 pb-20 lg:pb-40">
           <section>
             <div className={inter.className}>
-              <h1 className="my-3 text-center text-4xl font-bold uppercase leading-loose tracking-widest text-slate-900">
+              <h1 className="my-3 text-center text-4xl font-bold uppercase leading-tight tracking-wide text-slate-900 lg:leading-loose lg:tracking-widest">
                 Find The Property For <br />{" "}
                 <span className="text-cyan-500"> Rent</span> or{" "}
                 <span className="text-cyan-700">Sale</span>
