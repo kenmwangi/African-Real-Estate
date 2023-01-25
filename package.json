@@ -30,11 +30,13 @@
     "react-calendar": "^4.0.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
+    "react-medium-image-zoom": "^5.1.2",
     "react-select": "^5.7.0",
     "superjson": "1.9.1",
     "zod": "^3.20.2"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/cookie": "^0.5.1",
     "@types/node": "^18.11.18",
     "@types/prettier": "^2.7.2",

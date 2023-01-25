@@ -22,7 +22,7 @@ const Hero = () => {
               <h1 className="my-3 text-center text-4xl font-bold uppercase leading-loose tracking-widest text-slate-900">
                 Find The Property For <br />{" "}
                 <span className="text-cyan-500"> Rent</span> or{" "}
-                <span className="text-cyan-600">Sale</span>
+                <span className="text-cyan-700">Sale</span>
               </h1>
 
               <div className="mx-auto mt-10 flex flex-col items-center">
@@ -79,7 +79,7 @@ const Hero = () => {
                   <section className="mt-5 flex justify-end pr-4">
                     <Link
                       href="/listing"
-                      className="border-b border-cyan-700 text-sm font-medium text-cyan-600 transition-colors hover:text-cyan-500"
+                      className="border-b border-cyan-700 text-sm font-medium text-indigo-600 transition-colors hover:text-cyan-500"
                     >
                       Advanced Search
                     </Link>
