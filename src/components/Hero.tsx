@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Logo from "/public/hero-bg.jpg";
 import { Inter } from "@next/font/google";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,8 +19,10 @@ const Hero = () => {
         <div className="relative mx-auto max-w-6xl pt-20 pb-20 lg:pb-40">
           <section>
             <div className={inter.className}>
-              <h1 className="text-center text-4xl font-bold uppercase leading-10">
-                Find The Property For <br /> Rent or Sale
+              <h1 className="my-3 text-center text-4xl font-bold uppercase leading-loose tracking-widest text-slate-900">
+                Find The Property For <br />{" "}
+                <span className="text-cyan-500"> Rent</span> or{" "}
+                <span className="text-cyan-600">Sale</span>
               </h1>
 
               <div className="mx-auto mt-10 flex flex-col items-center">
@@ -72,6 +75,15 @@ const Hero = () => {
                       </button>
                     </div>
                   </form>
+
+                  <section className="mt-5 flex justify-end pr-4">
+                    <Link
+                      href="/listing"
+                      className="border-b border-cyan-700 text-sm font-medium text-cyan-600 transition-colors hover:text-cyan-500"
+                    >
+                      Advanced Search
+                    </Link>
+                  </section>
                 </div>
               </div>
             </div>
