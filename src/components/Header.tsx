@@ -3,6 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { Fragment } from "react";
 
+import { Inter } from "@next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
+
 import Logo from "/public/real-estate.jpg";
 
 const navLinks = [
@@ -94,12 +98,14 @@ const Header = () => {
                 const { id, href, title } = navLink;
                 return (
                   <li className="nav__item mr-5" key={id}>
-                    <Link
-                      href={href}
-                      className="inline-block rounded-md px-4 py-2 text-xl font-medium leading-loose tracking-widest text-black no-underline transition-colors hover:text-indigo-700 focus:bg-indigo-100 focus:text-indigo-700 focus:outline-none dark:text-gray-100"
-                    >
-                      {title}
-                    </Link>
+                    <div className={inter.className}>
+                      <Link
+                        href={href}
+                        className="inline-block rounded-md px-4 py-2 text-lg font-medium leading-loose tracking-widest text-slate-800 no-underline transition-colors hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-700 focus:outline-none dark:text-gray-100"
+                      >
+                        {title}
+                      </Link>
+                    </div>
                   </li>
                 );
               })}
