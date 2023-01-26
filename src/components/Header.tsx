@@ -68,7 +68,7 @@ const Header = () => {
                           <Link
                             key={id}
                             href={href}
-                            className="dark:focus:bg-trueGray-700 -ml-4 w-full rounded-md px-4 py-2 font-medium text-gray-500 hover:text-indigo-700 focus:bg-indigo-100 focus:text-indigo-700 focus:outline-none dark:text-gray-300"
+                            className="dark:focus:bg-trueGray-700 -ml-4 w-full rounded-md px-4 py-2 font-medium text-slate-800 hover:text-indigo-700 focus:bg-indigo-100 focus:text-indigo-700 focus:outline-none dark:text-gray-300"
                           >
                             {title}
                           </Link>
@@ -96,7 +96,7 @@ const Header = () => {
                   <li className="nav__item mr-5" key={id}>
                     <Link
                       href={href}
-                      className="inline-block rounded-md px-4 py-2 text-lg leading-loose tracking-widest text-gray-800 no-underline transition-colors hover:text-indigo-700 focus:bg-indigo-100 focus:text-indigo-700 focus:outline-none dark:text-gray-100"
+                      className="inline-block rounded-md px-4 py-2 text-xl font-medium leading-loose tracking-widest text-black no-underline transition-colors hover:text-indigo-700 focus:bg-indigo-100 focus:text-indigo-700 focus:outline-none dark:text-gray-100"
                     >
                       {title}
                     </Link>
