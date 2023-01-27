@@ -51,10 +51,6 @@ const HomeTouring = ({ imgPos }: HomeTouringProps) => {
           <div className="mt-5 flex w-full items-center justify-center lg:items-start lg:justify-start">
             <Button>Browse Homes</Button>
           </div>
-
-          {/* <article className="w-full.mt-5">
-            <Benefit title={title}>{description}</Benefit>
-          </article> */}
         </div>
       </section>
     </Container>
