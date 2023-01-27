@@ -11,6 +11,7 @@ import Hero from "src/components/Hero";
 import FeaturedListing from "src/components/FeaturedListing";
 import HomeTouring from "src/components/HomeTouring";
 import RequestedOffers from "src/components/RequestedOffers";
+import FAQ from "src/components/FAQ";
 
 const HomePage: NextPage = () => {
   const [date, setDate] = useState<DateType>({
@@ -23,6 +24,7 @@ const HomePage: NextPage = () => {
       <FeaturedListing />
       <HomeTouring imgPos="right" />
       <RequestedOffers />
+      <FAQ />
       {/* {!date.dateTime && <Calendar setDate={setDate} date={date} />}
         {date.dateTime && true ? (
           <Menu />
