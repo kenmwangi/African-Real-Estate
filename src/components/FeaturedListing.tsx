@@ -3,6 +3,7 @@ import { Inter } from "@next/font/google";
 import Link from "next/link";
 
 import FeaturedListingCard from "./FeaturedListingCard";
+import Button from "./Button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -93,9 +94,7 @@ const FeaturedListing = () => {
           </article>
 
           <article className="my-10 text-center">
-            <button className="rounded-full bg-indigo-600 py-3 px-7 font-semibold tracking-widest text-white transition-colors hover:bg-indigo-700 focus:outline-none">
-              View All
-            </button>
+            <Button>View All</Button>
           </article>
         </div>
       </div>

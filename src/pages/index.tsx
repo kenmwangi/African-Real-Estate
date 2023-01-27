@@ -9,6 +9,7 @@ import Menu from "../components/Menu";
 import { type DateType } from "src/utils/types";
 import Hero from "src/components/Hero";
 import FeaturedListing from "src/components/FeaturedListing";
+import HomeTouring from "src/components/HomeTouring";
 
 const HomePage: NextPage = () => {
   const [date, setDate] = useState<DateType>({
@@ -19,6 +20,7 @@ const HomePage: NextPage = () => {
     <div className="pb-40">
       <Hero />
       <FeaturedListing />
+      <HomeTouring imgPos="right" />
       {/* {!date.dateTime && <Calendar setDate={setDate} date={date} />}
         {date.dateTime && true ? (
           <Menu />
