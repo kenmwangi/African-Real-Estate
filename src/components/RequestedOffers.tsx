@@ -12,7 +12,7 @@ const RequestedOffers = () => {
   return (
     <section className="w-full bg-[#eff8f7]">
       <Container className="">
-        <div className="flex flex-col items-center justify-center gap-10 p-14">
+        <div className="flex flex-col items-start justify-start gap-5 p-14 lg:items-center lg:justify-start lg:gap-10">
           <h2 className="tracking-light mt-3 max-w-2xl text-4xl font-bold leading-snug text-indigo-600 lg:text-7xl lg:leading-tight">
             <span>
               <Count />+
