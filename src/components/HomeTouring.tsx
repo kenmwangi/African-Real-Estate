@@ -5,14 +5,12 @@ import Image from "next/image";
 
 type HomeTouringProps = {
   imgPos: string;
-  title: string;
-  description: string;
 };
 
-type BenefitProps = {
-  title: string;
-  children: React.ReactNode;
-};
+// type BenefitProps = {
+//   title: string;
+//   children: React.ReactNode;
+// };
 const HomeTouring = ({ imgPos }: HomeTouringProps) => {
   return (
     <Container className="mb-20 flex flex-wrap lg:flex-nowrap lg:gap-10">
