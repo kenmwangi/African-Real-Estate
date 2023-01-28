@@ -273,7 +273,7 @@ export default function MessageWidget() {
                           )}
                         </button>
                       </div>
-                      <p
+                      {/* <p
                         className="text-center text-xs text-gray-400"
                         id="result"
                       >
@@ -288,7 +288,7 @@ export default function MessageWidget() {
                             Web3Forms
                           </a>
                         </span>
-                      </p>
+                      </p> */}
                     </form>
                   )}
 
