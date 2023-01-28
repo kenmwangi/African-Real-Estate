@@ -12,7 +12,7 @@ import Logo from "/public/real-estate.jpg";
 const navLinks = [
   { id: 1, href: "/buy", title: "Buy" },
   { id: 2, href: "/sell", title: "Sell" },
-  //   { id: 3, href: "/listing", title: "Listing" },
+  { id: 3, href: "/blog", title: "Blog" },
   { id: 4, href: "/contact", title: "Contact" },
 ];
 
@@ -32,7 +32,7 @@ const Header = () => {
                         src={Logo}
                         alt="African Real Estate"
                         width="90"
-                        height="90"
+                        height="30"
                         className="w-20 object-contain"
                       />
                     </span>
@@ -41,7 +41,7 @@ const Header = () => {
 
                   <Disclosure.Button
                     aria-label="Toggle Menu"
-                    className="dark:focus:bg-trueGray-700 ml-auto rounded-md px-2 py-1 text-gray-500 hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-500 focus:outline-none dark:text-gray-300 lg:hidden"
+                    className="ml-auto rounded-md px-2 py-1 text-gray-500 hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-500 focus:outline-none  lg:hidden"
                   >
                     <svg
                       className="h-6 w-6 fill-current"
@@ -72,7 +72,7 @@ const Header = () => {
                           <Link
                             key={id}
                             href={href}
-                            className="dark:focus:bg-trueGray-700 -ml-4 w-full rounded-md px-4 py-2 font-medium text-slate-800 hover:text-indigo-700 focus:bg-indigo-100 focus:text-indigo-700 focus:outline-none dark:text-gray-300"
+                            className=" focus:outline-nonef -ml-4 w-full rounded-md px-4 py-2 font-normal text-gray-800 hover:text-indigo-700 focus:bg-indigo-100 focus:text-indigo-700"
                           >
                             {title}
                           </Link>
@@ -101,7 +101,7 @@ const Header = () => {
                     <div className={inter.className}>
                       <Link
                         href={href}
-                        className="inline-block rounded-md px-4 py-2 text-lg font-medium leading-loose tracking-widest text-slate-800 no-underline transition-colors hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-700 focus:outline-none dark:text-gray-100"
+                        className="text-md inline-block rounded-md px-4 py-2 font-normal leading-loose tracking-widest text-gray-700 no-underline transition-colors hover:text-indigo-500 focus:bg-indigo-100 focus:text-indigo-700 focus:outline-none"
                       >
                         {title}
                       </Link>

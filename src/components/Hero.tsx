@@ -16,7 +16,7 @@ const Hero = () => {
           fill
           className="pointer-events-none h-full object-cover object-bottom"
         />
-        <div className="relative mx-auto max-w-6xl pt-20 pb-20 lg:pb-40">
+        <div className="relative mx-auto max-w-6xl pt-10 pb-10 lg:pb-[8rem]">
           <section>
             <div className={inter.className}>
               <h1 className="my-3 text-center text-4xl font-bold uppercase leading-tight tracking-wide text-slate-900 lg:leading-loose lg:tracking-widest">

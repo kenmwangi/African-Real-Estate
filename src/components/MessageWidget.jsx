@@ -135,7 +135,7 @@ export default function MessageWidget() {
                     <form onSubmit={handleSubmit(onSubmit)} noValidate>
                       <input
                         type="hidden"
-                        value="dd2f9cf1-4b48-4017-9d50-d3e1e477f037"
+                        value={process.env.Web3Forms_KEY}
                         {...register("apikey")}
                       />
                       <input

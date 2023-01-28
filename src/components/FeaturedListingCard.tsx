@@ -23,23 +23,16 @@ const FeaturedListingCard = ({
   area,
   location,
 }: FeaturedListingCardProps) => {
-  const [isZoomed, setIsZoomed] = useState(false);
+  // const [isZoomed, setIsZoomed] = useState(false);
   return (
-    <div className="overflow-hidden rounded border bg-white transition-all duration-150 ease-out hover:shadow-xl hover:shadow-gray-200">
-      <div
-        className="relative cursor-zoom-in"
-        onClick={(e) => {
-          setIsZoomed(!isZoomed);
-        }}
-      >
-        <div
-          className={`relative aspect-[3/2] ${isZoomed ? "z-50" : "z-auto"}`}
-        >
+    <div className="overflow-hidden rounded-t-2xl border-b border-r border-l bg-white transition-all duration-150 ease-out hover:shadow-xl hover:shadow-gray-200">
+      <div className="relative">
+        <div className={`relative aspect-[16/9]`}>
           {image && (
             <Image
               src={image}
               fill
-              className="object-cover"
+              className="rounded-t-2xl object-cover"
               alt="Property Photo"
             />
           )}

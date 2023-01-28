@@ -13,7 +13,7 @@ const properties = [
     name: "2 BHK Apartment",
     price: "$2660",
     image: "/photos/property1.jpg",
-    type: "Sell",
+    type: "Buy",
     location: "Karen",
     beds: "2",
     baths: "2",
@@ -35,7 +35,7 @@ const properties = [
     name: "1 BHK Independent House",
     price: "$149",
     image: "/photos/property3.jpg",
-    type: "Sell",
+    type: "Buy",
     location: "Kitengela",
     beds: "1",
     baths: "1",
@@ -57,7 +57,7 @@ const properties = [
     name: "2 BHK Villa",
     price: "$140,650",
     image: "/photos/property5.jpg",
-    type: "Sell",
+    type: "Buy",
     location: "Karen",
     beds: "2",
     baths: "2",
@@ -68,7 +68,7 @@ const properties = [
     name: "1 BHK Independent House",
     price: "$1499",
     image: "/photos/property6.jpg",
-    type: "Sell",
+    type: "Buy",
     location: "Kilimani",
     beds: "1",
     baths: "1",
@@ -78,7 +78,7 @@ const properties = [
 
 const FeaturedListing = () => {
   return (
-    <section className="px-6 py-20">
+    <section className="px-6 py-10">
       <div className="mx-auto max-w-7xl">
         <span className={inter.className}>
           <h2 className="my-5 text-center text-3xl font-semibold uppercase">
@@ -87,7 +87,7 @@ const FeaturedListing = () => {
         </span>
 
         <div className="mt-10">
-          <article className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <article className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
             {properties.map((property) => {
               return <FeaturedListingCard key={property.id} {...property} />;
             })}
