@@ -31,6 +31,7 @@
     "react-calendar": "^4.0.0",
     "react-countup": "^6.4.1",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.42.1",
     "react-icons": "^4.7.1",
     "react-medium-image-zoom": "^5.1.2",
     "react-select": "^5.7.0",
