@@ -2,6 +2,16 @@ import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Disclosure, Transition } from "@headlessui/react";
 
+// type formInputs = {
+//   name: string,
+//   email: string,
+//   message: string,
+//   apikey: string,
+//   subject: string,
+//   from_name: string,
+//   botcheck: string,
+// };
+
 export default function MessageWidget() {
   const {
     register,
@@ -15,13 +25,13 @@ export default function MessageWidget() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [Message, setMessage] = useState("");
 
-  const userName: string = useWatch({
+  const userName = useWatch({
     control,
     name: "name",
     defaultValue: "Someone",
   });
 
-  const onSubmit = async (data, e) => {
+  const onSubmit = async (data, event) => {
     console.log(data);
     await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -32,11 +42,11 @@ export default function MessageWidget() {
       body: JSON.stringify(data, null, 2),
     })
       .then(async (response) => {
-        let json = await response.json();
+        const json = await response.json();
         if (json.success) {
           setIsSuccess(true);
           setMessage(json.message);
-          e.target.reset();
+          event.target.reset();
           reset();
         } else {
           setIsSuccess(false);

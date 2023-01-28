@@ -12,7 +12,7 @@ import FeaturedListing from "src/components/FeaturedListing";
 import HomeTouring from "src/components/HomeTouring";
 import RequestedOffers from "src/components/RequestedOffers";
 import FAQ from "src/components/FAQ";
-import MessageWidget from "src/components/MessageWidget";
+import MessageWidget from "src/components/MessageWidget.jsx";
 
 const HomePage: NextPage = () => {
   const [date, setDate] = useState<DateType>({

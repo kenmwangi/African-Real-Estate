@@ -3,8 +3,8 @@ import Link from "next/link";
 const navigationLinks = [
   { id: 1, href: "/home", title: "Home" },
   { id: 2, href: "/buy", title: "Buy" },
-  { id: 1, href: "/sell", title: "Sell" },
-  { id: 1, href: "/listing", title: "Listings" },
+  { id: 3, href: "/sell", title: "Sell" },
+  { id: 4, href: "/listing", title: "Listings" },
 ];
 
 const extraInformation = [
