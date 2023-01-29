@@ -82,7 +82,7 @@ const FeaturedListing = () => {
       <div className="mx-auto max-w-7xl">
         <span className={inter.className}>
           <h2 className="my-5 text-center text-3xl font-semibold uppercase">
-            Featured Listing
+            Featured Listings
           </h2>
         </span>
 
