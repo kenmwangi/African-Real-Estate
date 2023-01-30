@@ -7,10 +7,18 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      colors: {
+        brand: {
+          accent: "#EFF8F7",
+        },
+      },
       fontFamily: {
         sans: ["var(--font-inter)", ...fontFamily.sans],
       },
     },
   },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    // require("@tailwindcss/forms"),
+  ],
 };

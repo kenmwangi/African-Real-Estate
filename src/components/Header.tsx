@@ -12,14 +12,14 @@ import Logo from "/public/real-estate.jpg";
 const navLinks = [
   { id: 1, href: "/buy", title: "Buy" },
   { id: 2, href: "/sell", title: "Sell" },
-  { id: 3, href: "/blog", title: "Blog" },
+  // { id: 3, href: "/blog", title: "Blog" },
   { id: 4, href: "/contact", title: "Contact" },
 ];
 
 const Header = () => {
   return (
     <header className="">
-      <div className="w-full shadow-md">
+      <div className="w-full shadow-sm">
         <nav className="container relative mx-auto flex flex-wrap items-center justify-between px-4 lg:justify-between">
           {/* Logo  */}
           <Disclosure>

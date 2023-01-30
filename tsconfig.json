@@ -26,7 +26,8 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs",
-    "src/components/MessageWidget.jsx"
+    "src/components/MessageWidget.jsx",
+    "src/pages/404.jsx"
   ],
   "exclude": ["node_modules"]
 }
