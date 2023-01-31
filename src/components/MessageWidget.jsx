@@ -218,7 +218,7 @@ export default function MessageWidget() {
                       <div className="mb-4">
                         <label
                           htmlFor="message"
-                          className="mb-2 block text-sm text-gray-600 dark:text-gray-400"
+                          className="mb-2 block text-sm text-gray-600"
                         >
                           Your Message
                         </label>

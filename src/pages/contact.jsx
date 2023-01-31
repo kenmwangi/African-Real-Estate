@@ -136,10 +136,10 @@ const ContactPage = () => {
               <div className="grid gap-8 md:grid-cols-2">
                 <input
                   type="text"
-                  className={`border-0 border-b px-0  focus:ring-0 ${
+                  className={`rounded-md border border-gray-300 bg-white px-3 py-2 placeholder-gray-300 focus:outline-none focus:ring ${
                     errors.name
-                      ? "border-red-600 focus:border-red-600 "
-                      : "border-gray-400 focus:border-gray-900   "
+                      ? "border-red-600 ring-red-100 focus:border-red-600"
+                      : "border-gray-300 ring-indigo-100 focus:border-indigo-600"
                   }
                     `}
                   placeholder="Name*"
@@ -151,10 +151,10 @@ const ContactPage = () => {
                 <input
                   type="email"
                   placeholder="Email*"
-                  className={`border-0 border-b px-0  focus:ring-0 ${
+                  className={`rounded-md border border-gray-300 bg-white px-3 py-2 placeholder-gray-300 focus:outline-none focus:ring ${
                     errors.email
-                      ? "border-red-600 focus:border-red-600 "
-                      : "border-gray-400 focus:border-gray-900   "
+                      ? "border-red-600 ring-red-100 focus:border-red-600"
+                      : "border-gray-300 ring-indigo-100 focus:border-indigo-600"
                   }
                     `}
                   {...register("email", {
@@ -167,10 +167,10 @@ const ContactPage = () => {
                 />
                 <input
                   type="text"
-                  className={`border-0 border-b px-0  focus:ring-0 ${
+                  className={`rounded-md border border-gray-300 bg-white px-3 py-2 placeholder-gray-300 focus:outline-none focus:ring ${
                     errors.phone
-                      ? "border-red-600 focus:border-red-600 "
-                      : "border-gray-400 focus:border-gray-900   "
+                      ? "border-red-600 ring-red-100 focus:border-red-600"
+                      : "border-gray-300 ring-indigo-100 focus:border-indigo-600"
                   }
                     `}
                   placeholder="Phone*"
@@ -180,10 +180,10 @@ const ContactPage = () => {
                 />
                 <select
                   id="type"
-                  className={`border-0 border-b px-0  focus:ring-0 ${
+                  className={`rounded-md border border-gray-300 bg-white px-3 py-2 placeholder-gray-300 focus:outline-none focus:ring ${
                     errors.type
-                      ? "border-red-600 focus:border-red-600 "
-                      : "border-gray-400 focus:border-gray-900   "
+                      ? "border-red-600 ring-red-100 focus:border-red-600"
+                      : "border-gray-300 ring-indigo-100 focus:border-indigo-600"
                   }
                     `}
                   {...register("type", {
@@ -194,10 +194,10 @@ const ContactPage = () => {
                   <option>Sell</option>
                 </select>
                 <textarea
-                  className={`h-64 border-0 border-b px-0 focus:ring-0   md:col-span-2 ${
+                  className={`h-64 w-full rounded-md border border-gray-300 bg-white px-3 py-2 placeholder-gray-300 focus:outline-none focus:ring   md:col-span-2 ${
                     errors.message
-                      ? "border-red-600 focus:border-red-600 "
-                      : "border-gray-400 focus:border-gray-900   "
+                      ? "border-red-600 ring-red-100 focus:border-red-600"
+                      : "border-gray-300 ring-indigo-100 focus:border-indigo-600"
                   }
                     `}
                   placeholder="Message*"
