@@ -27,7 +27,8 @@
     "**/*.cjs",
     "**/*.mjs",
     "src/components/MessageWidget.jsx",
-    "src/pages/404.jsx"
+    "src/pages/404.jsx",
+    "src/pages/contact.jsx"
   ],
   "exclude": ["node_modules"]
 }

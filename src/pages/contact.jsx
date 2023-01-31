@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import Button from "src/components/Button";
+import useWeb3Forms from "use-web3forms";
+
 import GenericHero from "src/components/GenericHero";
 
 const ContactPage = () => {
@@ -19,7 +20,23 @@ const ContactPage = () => {
   const [message, setMessage] = useState(false);
 
   // Access Key
-  const accessKey = process.env.WEB3FORMS_KEY;
+  const accessKey =
+    process.env.Web3Forms_KEY || "dd2f9cf1-4b48-4017-9d50-d3e1e477f037";
+
+  const { submit: onSubmit } = useWeb3Forms({
+    apikey: accessKey,
+    from_name: "African Real Estate",
+    subject: "New Contact Message from your Website",
+    onSuccess: (msg, data) => {
+      setIsSuccess(true);
+      setMessage(msg);
+      reset();
+    },
+    onError: (msg, data) => {
+      setIsSuccess(false);
+      setMessage(msg);
+    },
+  });
 
   return (
     <section className="pb-40">
@@ -107,7 +124,7 @@ const ContactPage = () => {
             <h2 className="text-center text-2xl uppercase leading-10">
               Reach Us
             </h2>
-            <form className="mt-8">
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-8">
               <input
                 type="checkbox"
                 id=""
@@ -221,7 +238,7 @@ const ContactPage = () => {
                 </button>
               </div>
               {isSubmitSuccessful && isSuccess && (
-                <div className="mt-3 text-center text-sm text-green-300">
+                <div className="mt-3 text-center text-sm text-green-500">
                   {message || "Success. Message sent successfully"}
                 </div>
               )}
