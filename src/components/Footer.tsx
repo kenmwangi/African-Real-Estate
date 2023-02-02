@@ -22,7 +22,7 @@ export default function Footer() {
           backgroundImage: "url('/building_trees.png')",
         }}
       ></div>
-      <div className="mb-3 bg-gray-800 px-6 pt-24">
+      <div className="bg-gray-800 px-6 pt-24">
         <div className="mx-auto max-w-6xl">
           <div className="space-y-8 md:flex md:space-y-0">
             <div className="space-y-8 md:flex md:w-8/12 md:space-y-0">
