@@ -13,7 +13,7 @@ type HomeTouringProps = {
 // };
 const HomeTouring = ({ imgPos }: HomeTouringProps) => {
   return (
-    <Container className="mb-20 flex flex-wrap lg:flex-nowrap lg:gap-10">
+    <Container className="mb-20 flex max-w-6xl flex-wrap lg:flex-nowrap lg:gap-10">
       <section
         className={`flex w-full items-center justify-center lg:w-1/2 ${
           imgPos === "right" ? "lg:order-1" : ""

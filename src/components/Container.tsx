@@ -7,7 +7,7 @@ type ContainerProps = {
 const Container = ({ className, children }: ContainerProps) => {
   return (
     <section
-      className={`container mx-auto p-8 xl:px-0 ${className ? className : ""}`}
+      className={`container mx-auto py-8 xl:px-0 ${className ? className : ""}`}
     >
       {children}
     </section>

@@ -78,10 +78,10 @@ const properties = [
 
 const FeaturedListing = () => {
   return (
-    <section className="px-6 py-10">
-      <div className="mx-auto max-w-7xl">
+    <section className="px-4 py-10">
+      <div className="mx-auto max-w-6xl">
         <span className={inter.className}></span>
-        <h2 className="my-5 text-center text-3xl font-semibold uppercase text-gray-800">
+        <h2 className="my-10 max-w-2xl text-center text-3xl font-bold leading-snug tracking-tight text-slate-800 lg:max-w-full lg:text-4xl lg:leading-tight">
           Featured Listings
         </h2>
 

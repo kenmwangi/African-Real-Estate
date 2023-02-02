@@ -34,7 +34,7 @@ const FAQ = () => {
   return (
     <Container className="!p-0">
       <section className="mx-auto mt-10 w-full max-w-5xl rounded-2xl px-5 py-10">
-        <h1 className="my-10 max-w-2xl text-center text-3xl font-bold leading-snug tracking-tight text-slate-800 lg:max-w-full lg:text-6xl lg:leading-tight">
+        <h1 className="my-10 max-w-2xl text-center text-3xl font-bold leading-snug tracking-tight text-slate-800 lg:max-w-full lg:text-4xl lg:leading-tight">
           Frequently Asked Questions
         </h1>
         {faqdata.map((item) => (
