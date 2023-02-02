@@ -28,13 +28,13 @@ const HomePage: NextPage = () => {
       <FAQ />
       <MessageWidget />
       {/* {!date.dateTime && <Calendar setDate={setDate} date={date} />}
-        {date.dateTime && true ? (
-          <Menu />
-        ) : (
-          <div className="flex h-screen items-center justify-center">
-            <Spinner />
-          </div>
-        )} */}
+      {date.dateTime && true ? (
+        <Menu />
+      ) : (
+        <div className="flex h-screen items-center justify-center">
+          <Spinner />
+        </div>
+      )} */}
     </div>
   );
 };

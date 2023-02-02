@@ -80,11 +80,10 @@ const FeaturedListing = () => {
   return (
     <section className="px-6 py-10">
       <div className="mx-auto max-w-7xl">
-        <span className={inter.className}>
-          <h2 className="my-5 text-center text-3xl font-semibold uppercase">
-            Featured Listings
-          </h2>
-        </span>
+        <span className={inter.className}></span>
+        <h2 className="my-5 text-center text-3xl font-semibold uppercase text-gray-800">
+          Featured Listings
+        </h2>
 
         <div className="mt-10">
           <article className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
