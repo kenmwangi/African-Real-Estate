@@ -1,6 +1,5 @@
 import React from "react";
 import { Inter } from "@next/font/google";
-import Link from "next/link";
 
 import FeaturedListingCard from "./FeaturedListingCard";
 import Button from "./Button";
