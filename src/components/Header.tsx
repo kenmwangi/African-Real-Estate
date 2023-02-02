@@ -79,11 +79,12 @@ const Header = () => {
                         );
                       })}
                       <Link
-                        href="/"
+                        href="/signin"
                         className="mt-3 w-full rounded-md bg-indigo-500 px-6 py-2 text-center text-white transition-colors hover:bg-indigo-600 lg:ml-5"
                       >
                         Sign In
                       </Link>
+                      {/* <Link href="/signin">Sign In</Link> */}
                     </>
                   </Disclosure.Panel>
                 </div>
@@ -113,9 +114,15 @@ const Header = () => {
           </div>
 
           <div className="nav__item mr-3 hidden space-x-3 lg:flex">
-            <Link
-              href="/"
+            {/* <Link
+              href="/signin"
               className="text-md rounded-md bg-indigo-500 px-5 py-2 font-normal tracking-[.5px] text-white transition-colors hover:bg-indigo-600 md:ml-5"
+            >
+              Sign In
+            </Link> */}
+            <Link
+              href="/signin"
+              className="text-md font-semibold tracking-wide text-indigo-500 transition-colors hover:text-indigo-700 hover:underline hover:underline-offset-4 lg:text-xl"
             >
               Sign In
             </Link>
