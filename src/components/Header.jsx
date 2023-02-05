@@ -8,6 +8,7 @@ import { Inter } from "@next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 import Logo from "/public/real-estate.jpg";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const navLinks = [
   { id: 1, href: "/buy", title: "Buy" },
@@ -17,6 +18,7 @@ const navLinks = [
 ];
 
 const Header = () => {
+  const { data: sessionData } = useSession();
   return (
     <header className="">
       <div className="w-full shadow-sm">
@@ -78,12 +80,23 @@ const Header = () => {
                           </Link>
                         );
                       })}
+                      <p className="text-xs text-gray-700">
+                        {sessionData && (
+                          <span>
+                            Welcome, <strong>{sessionData.user?.name}</strong>{" "}
+                          </span>
+                        )}
+                      </p>
                       <Link
+                        onClick={
+                          sessionData ? () => signOut("") : () => signIn()
+                        }
                         href="/auth/signin"
                         className="mt-3 w-full rounded-md bg-indigo-500 px-6 py-2 text-center text-white transition-colors hover:bg-indigo-600 lg:ml-5"
                       >
-                        Sign In
+                        {sessionData ? "Sign out" : "Sign in"}
                       </Link>
+
                       {/* <Link href="/signin">Sign In</Link> */}
                     </>
                   </Disclosure.Panel>
@@ -113,18 +126,20 @@ const Header = () => {
             </ul>
           </div>
 
-          <div className="nav__item mr-3 hidden space-x-3 lg:flex">
-            {/* <Link
-              href="/signin"
-              className="text-md rounded-md bg-indigo-500 px-5 py-2 font-normal tracking-[.5px] text-white transition-colors hover:bg-indigo-600 md:ml-5"
-            >
-              Sign In
-            </Link> */}
+          <div className="nav__item mr-3 flex hidden  items-center space-x-3 lg:flex">
+            <p className="text-xs text-gray-700">
+              {sessionData && (
+                <span>
+                  Welcome, <strong>{sessionData.user?.name}</strong>{" "}
+                </span>
+              )}
+            </p>
             <Link
+              onClick={sessionData ? () => signOut("") : () => signIn()}
               href="/auth/signin"
-              className="text-md font-semibold tracking-wide text-indigo-500 transition-colors hover:text-indigo-700 hover:underline hover:underline-offset-4 lg:text-xl"
+              className="lg:text-md text-sm font-semibold tracking-wide text-indigo-500 transition-colors hover:text-indigo-700 hover:underline hover:underline-offset-4"
             >
-              Sign In
+              {sessionData ? "Sign out" : "Sign in"}
             </Link>
           </div>
         </nav>
