@@ -79,7 +79,7 @@ const Header = () => {
                         );
                       })}
                       <Link
-                        href="/signin"
+                        href="/auth/signin"
                         className="mt-3 w-full rounded-md bg-indigo-500 px-6 py-2 text-center text-white transition-colors hover:bg-indigo-600 lg:ml-5"
                       >
                         Sign In
@@ -121,7 +121,7 @@ const Header = () => {
               Sign In
             </Link> */}
             <Link
-              href="/signin"
+              href="/auth/signin"
               className="text-md font-semibold tracking-wide text-indigo-500 transition-colors hover:text-indigo-700 hover:underline hover:underline-offset-4 lg:text-xl"
             >
               Sign In
