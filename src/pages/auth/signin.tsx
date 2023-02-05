@@ -1,18 +1,19 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next";
-import { getProviders, signIn } from "next-auth/react";
+import { getProviders, signIn, useSession } from "next-auth/react";
 import getServerSession from "next-auth/next";
 import Link from "next/link";
-// import { authOptions } from "../api/auth/[...nextauth]";
+import authOptions from "../api/auth/[...nextauth]";
 
 type SigninProps = {
   providers: ReturnType<typeof getProviders>;
 };
 
 export default function SignIn({ providers }: SigninProps) {
+  const { data: session } = useSession();
+  console.log(session);
   return (
     <section className="mx-auto mb-20 mt-16 flex w-full max-w-3xl flex-col items-center justify-center rounded bg-white  py-16 px-4 shadow lg:max-w-6xl">
       <h1 className="my-10 max-w-2xl text-center text-3xl font-bold leading-snug tracking-tight text-slate-800 lg:max-w-full lg:text-4xl lg:leading-tight">
@@ -83,14 +84,14 @@ export default function SignIn({ providers }: SigninProps) {
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  //   const session = await getServerSession(context.req, context.res, authOptions);
+  // const session = await getServerSession(context.req, context.res, authOptions);
 
-  //   //   If the user is already logged in, redirect.
-  //   //   Note: Make sure not to redirect to the same page
-  //   //   To avoid an infinite loop!
-  //   if (session) {
-  //     return { redirect: { destination: "/" } };
-  //   }
+  // //   If the user is already logged in, redirect.
+  // //   Note: Make sure not to redirect to the same page
+  // //   To avoid an infinite loop!
+  // if (session) {
+  //   return { redirect: { destination: "/" } };
+  // }
 
   const providers = await getProviders();
 
