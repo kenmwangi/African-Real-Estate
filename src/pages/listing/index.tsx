@@ -81,7 +81,7 @@ const Listing = () => {
           <div className="flex">
             <div className="mb:block hidden flex-1">{/* space div */}</div>
             <div className="flex-1">
-              <h2 className="text-2xl font-medium uppercase leading-10">
+              <h2 className="mb-10 text-2xl font-medium uppercase leading-10">
                 Featured Listing
               </h2>
             </div>
