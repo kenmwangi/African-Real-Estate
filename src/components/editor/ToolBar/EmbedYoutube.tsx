@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from "../ToolBar/Button";
-import LinkForm, { type linkOption } from "../Link/LinkForm";
 import { BsYoutube } from "react-icons/bs";
 
 interface Props {
@@ -10,10 +9,10 @@ const EmbedYoutube: React.FC<Props> = ({ onSubmit }) => {
   const [url, setUrl] = useState("");
   const [visible, setVisible] = useState(false);
 
-  const handleSubmit = (link: string) => {
+  const handleSubmit = () => {
     if (!url.trim()) return hideForm();
 
-    onSubmit(link);
+    onSubmit(url);
     setUrl("");
     hideForm();
   };
