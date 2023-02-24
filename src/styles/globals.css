@@ -6,6 +6,15 @@
   pointer-events: none;
 }
 
+/* custom scroll css */
+.custom-scroll-bar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+/* Handle */
+.custom-scroll-bar::-webkit-scrollbar-thumb {
+  background: rgba(202, 181, 226);
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -13,9 +13,11 @@ import Youtube from "@tiptap/extension-youtube";
 
 import ToolBar from "./ToolBar/";
 import EditLink from "./Link/EditLink";
+import GalleryModal from "./GalleryModal";
 
 const Editor = () => {
   const [selectionRange, setSelectionRange] = useState<Range>();
+  const [showGallery, setShowGallery] = useState(false);
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -62,12 +64,22 @@ const Editor = () => {
   }, [editor, selectionRange]);
 
   return (
-    <div className="flex flex-col">
-      <ToolBar editor={editor} />
-      <div className="my-3 h-[1px] w-full bg-slate-400" />
-      {editor ? <EditLink editor={editor} /> : null}
-      <EditorContent editor={editor} />
-    </div>
+    <>
+      <div className="flex flex-col">
+        <ToolBar
+          editor={editor}
+          onOpenImageClick={() => setShowGallery(true)}
+        />
+        <div className="my-3 h-[1px] w-full bg-slate-400" />
+        {editor ? <EditLink editor={editor} /> : null}
+        <EditorContent editor={editor} />
+      </div>
+
+      <GalleryModal
+        visible={showGallery}
+        onClose={() => setShowGallery(false)}
+      />
+    </>
   );
 };
 

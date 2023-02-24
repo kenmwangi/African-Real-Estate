@@ -22,9 +22,13 @@ import { type linkOption } from "../Link/LinkForm";
 import EmbedYoutube from "./EmbedYoutube";
 interface Props {
   editor: Editor | null;
+  onOpenImageClick?(): void;
 }
 
-const ToolBar: FC<Props> = ({ editor }): JSX.Element | null => {
+const ToolBar: FC<Props> = ({
+  editor,
+  onOpenImageClick,
+}): JSX.Element | null => {
   if (!editor) return null;
 
   const options = [
@@ -163,7 +167,7 @@ const ToolBar: FC<Props> = ({ editor }): JSX.Element | null => {
       <div className="mx-8 h-4 w-[1px] bg-slate-400 dark:bg-slate-100" />
       <div className="flex items-center space-x-3">
         <EmbedYoutube onSubmit={handleEmbedYoutube} />
-        <Button>
+        <Button onClick={onOpenImageClick}>
           <BsImageFill />
         </Button>
       </div>
