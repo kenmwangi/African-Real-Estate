@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import GenericHero from "src/components/GenericHero";
 
 const pricingPlans = [
@@ -28,6 +29,12 @@ const index = () => {
           <p className="mt-3 text-center text-sm text-gray-500 md:text-lg">
             Choose the best pricing plan that suits you
           </p>
+          <Link
+            href="/sell/sell-your-property"
+            className="text-3xl text-red-400 hover:text-red-600"
+          >
+            Sell Your Property
+          </Link>
           <div className="mx-auto mt-7 max-w-7xl overflow-x-auto bg-white px-5 md:rounded-md md:shadow-sm lg:mt-10 lg:block">
             <table className="whitespace-no-wrap mt-10 w-full table-fixed text-left">
               <thead>

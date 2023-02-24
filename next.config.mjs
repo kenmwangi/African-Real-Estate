@@ -14,5 +14,8 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  images: {
+    domains: ["africanestatebucket.s3.eu-west-2.amazonaws.com"],
+  },
 };
 export default config;
