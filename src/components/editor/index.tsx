@@ -10,10 +10,11 @@ import Underline from "@tiptap/extension-underline";
 import Placeholder from "@tiptap/extension-placeholder";
 import Link from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
+import TitapImage from "@tiptap/extension-image";
 
 import ToolBar from "./ToolBar/";
 import EditLink from "./Link/EditLink";
-import GalleryModal from "./GalleryModal";
+import GalleryModal, { type ImageSelectionResult } from "./GalleryModal";
 
 const Editor = () => {
   const [selectionRange, setSelectionRange] = useState<Range>();
@@ -40,22 +41,35 @@ const Editor = () => {
           class: "mx-auto rounded",
         },
       }),
+      TitapImage.configure({
+        HTMLAttributes: {
+          class: "mx-auto",
+        },
+      }),
     ],
 
-    editorProps: {
-      handleClick(view, pos, event) {
-        const { state } = view;
-        const selectionRange = getMarkRange(
-          state.doc.resolve(pos),
-          state.schema.marks.link
-        );
-        if (selectionRange) setSelectionRange(selectionRange);
-      },
-      attributes: {
-        class: "prose prose-lg focus:outline-none max-w-full mx-auto h-full",
-      },
-    },
+    // editorProps: {
+    //   handleClick(view, pos, event) {
+    //     const { state } = view;
+    //     const selectionRange = getMarkRange(
+    //       state.doc.resolve(pos),
+    //       state.schema.marks.link
+    //     );
+    //     if (selectionRange) setSelectionRange(selectionRange);
+    //   },
+    //   attributes: {
+    //     class: "prose prose-lg focus:outline-none max-w-full mx-auto h-full",
+    //   },
+    // },
   });
+
+  const handleImageSelection = (result: ImageSelectionResult) => {
+    editor
+      ?.chain()
+      .focus()
+      .setImage({ src: result.src, alt: result.altText })
+      .run();
+  };
 
   useEffect(() => {
     if (editor && selectionRange) {
@@ -75,10 +89,12 @@ const Editor = () => {
         <EditorContent editor={editor} />
       </div>
 
-      <GalleryModal
+      {/* <GalleryModal
         visible={showGallery}
+        onSelect={handleImageSelection}
+        // onImageSelect={}
         onClose={() => setShowGallery(false)}
-      />
+      /> */}
     </>
   );
 };

@@ -1,7 +1,14 @@
-import { getProviders, signIn, signOut, useSession } from "next-auth/react";
+import {
+  getProviders,
+  signIn,
+  signOut,
+  getServerSession,
+  useSession,
+} from "next-auth/react";
 import { AppProps } from "next/app";
 import Image from "next/image";
 import Link from "next/link";
+import { authOptions } from "src/server/auth";
 // import { GetServerSideProps } from "next";
 
 const SigninPage = ({ providers }) => {
@@ -21,7 +28,9 @@ const SigninPage = ({ providers }) => {
         return (
           <div key={name} className="mb-10 space-y-10">
             <button
-              onClick={() => signIn(id, { callbackUrl: "/sell" })}
+              onClick={() =>
+                signIn(id, { callbackUrl: "/sell/sell-your-property" })
+              }
               className=" mx-auto  flex items-center justify-between rounded-lg border border-slate-300 bg-white py-2 px-10 font-normal text-slate-900 hover:shadow-md lg:max-w-5xl"
             >
               <Image
@@ -43,7 +52,9 @@ const SigninPage = ({ providers }) => {
             </div>
 
             <button
-              onClick={() => signIn(id, { callbackUrl: "/sell" })}
+              onClick={() =>
+                signIn(id, { callbackUrl: "/sell/sell-your-property" })
+              }
               className=" mx-auto mb-10 flex items-center rounded-lg border border-slate-300 bg-white py-2 px-10 font-normal text-slate-900 hover:shadow-md"
             >
               <Image

@@ -16,6 +16,9 @@ module.exports = {
         sans: ["var(--font-inter)", ...fontFamily.sans],
       },
     },
+    backgroundImage: {
+      "png-pattern": "url('/empty-bg.jpg')",
+    },
   },
   plugins: [
     require("@tailwindcss/aspect-ratio"),

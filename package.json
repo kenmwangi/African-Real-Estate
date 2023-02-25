@@ -17,6 +17,7 @@
     "@prisma/client": "^4.8.0",
     "@tailwindcss/typography": "^0.5.9",
     "@tanstack/react-query": "^4.20.0",
+    "@tiptap/extension-image": "^2.0.0-beta.218",
     "@tiptap/extension-link": "^2.0.0-beta.218",
     "@tiptap/extension-placeholder": "^2.0.0-beta.218",
     "@tiptap/extension-underline": "^2.0.0-beta.218",

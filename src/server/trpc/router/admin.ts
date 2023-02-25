@@ -43,33 +43,33 @@ export const adminRouter = router({
       });
     }),
 
-  createPresignedUrl: adminProcedure
-    .input(z.object({ fileType: z.string() }))
-    .mutation(async ({ input }) => {
-      const id = nanoid();
-      const ex = input.fileType.split("/")[1];
-      const key = `${id}.${ex}`;
+  // createPresignedUrl: adminProcedure
+  //   .input(z.object({ fileType: z.string() }))
+  //   .mutation(async ({ input }) => {
+  //     const id = nanoid();
+  //     const ex = input.fileType.split("/")[1];
+  //     const key = `${id}.${ex}`;
 
-      const { url, fields } = (await new Promise((resolve, reject) => {
-        s3.createPresignedPost(
-          {
-            Bucket: "africanestatebucket",
-            Fields: { key },
-            Expires: 60,
-            Conditions: [
-              ["content-length-range", 0, MAX_FILE_SIZE],
-              ["starts-with", "$Content-Type", "image/"],
-            ],
-          },
-          (err, signed) => {
-            if (err) return reject(err);
-            resolve(signed);
-          }
-        );
-      })) as any as { url: string; fields: any };
+  //     const { url, fields } = (await new Promise((resolve, reject) => {
+  //       s3.createPresignedPost(
+  //         {
+  //           Bucket: "africanestatebucket",
+  //           Fields: { key },
+  //           Expires: 60,
+  //           Conditions: [
+  //             ["content-length-range", 0, MAX_FILE_SIZE],
+  //             ["starts-with", "$Content-Type", "image/"],
+  //           ],
+  //         },
+  //         (err, signed) => {
+  //           if (err) return reject(err);
+  //           resolve(signed);
+  //         }
+  //       );
+  //     })) as any as { url: string; fields: any };
 
-      return { url, fields, key };
-    }),
+  //     return { url, fields, key };
+  //   }),
 
   addMenuItem: adminProcedure
     .input(

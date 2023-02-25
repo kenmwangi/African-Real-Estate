@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-    provider = "cockroachdb"
+    provider = "postgresql"
     url      = env("DATABASE_URL")
     // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
     // Further reading:
@@ -15,12 +15,14 @@ datasource db {
     // relationMode = "prisma"
 }
 
-model Example {
-    id      String  @id @default(cuid())
-    name    String
-    checked Boolean
-    // createdAt DateTime @default(now())
-    // updatedAt DateTime @updatedAt
+model Post {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    title     String
+    published Boolean  @default(false)
+    userId    String
+    user      User     @relation(fields: [userId], references: [id])
 }
 
 // Necessary for Next auth
@@ -30,12 +32,12 @@ model Account {
     type              String
     provider          String
     providerAccountId String
-    refresh_token     String? //@db.Text
-    access_token      String? //@db.Text
+    refresh_token     String? @db.Text
+    access_token      String? @db.Text
     expires_at        Int?
     token_type        String?
     scope             String?
-    id_token          String? //@db.Text
+    id_token          String? @db.Text
     session_state     String?
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -58,6 +60,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    posts         Post[]
 }
 
 model VerificationToken {
