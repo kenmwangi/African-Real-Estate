@@ -4,7 +4,6 @@ import Link from "next/link";
 import type { NextPage } from "next";
 import Calendar from "../components/Calendar";
 import Spinner from "../components/Spinner";
-import Menu from "../components/Menu";
 
 // import { type DateType } from "src/utils/types";
 import Hero from "src/components/Hero";
