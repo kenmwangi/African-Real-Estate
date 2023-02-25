@@ -14,7 +14,11 @@ import TitapImage from "@tiptap/extension-image";
 
 import ToolBar from "./ToolBar/";
 
+<<<<<<< HEAD
 import GalleryModal, { type ImageSelectionResult } from "./GalleryModal";
+=======
+import GalleryModal from "./GalleryModal";
+>>>>>>> e0d9ca0 (fixed importation errors)
 
 const Editor = () => {
   const [selectionRange, setSelectionRange] = useState<Range>();
