@@ -13,7 +13,7 @@ import Youtube from "@tiptap/extension-youtube";
 import TitapImage from "@tiptap/extension-image";
 
 import ToolBar from "./ToolBar/";
-import EditLink from "./Link/EditLink";
+
 import GalleryModal, { type ImageSelectionResult } from "./GalleryModal";
 
 const Editor = () => {
@@ -85,7 +85,7 @@ const Editor = () => {
           onOpenImageClick={() => setShowGallery(true)}
         />
         <div className="my-3 h-[1px] w-full bg-slate-400" />
-        {editor ? <EditLink editor={editor} /> : null}
+
         <EditorContent editor={editor} />
       </div>
 
