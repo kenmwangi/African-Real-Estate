@@ -14,11 +14,7 @@ import TitapImage from "@tiptap/extension-image";
 
 import ToolBar from "./ToolBar/";
 
-<<<<<<< HEAD
 import GalleryModal, { type ImageSelectionResult } from "./GalleryModal";
-=======
-import GalleryModal from "./GalleryModal";
->>>>>>> e0d9ca0 (fixed importation errors)
 
 const Editor = () => {
   const [selectionRange, setSelectionRange] = useState<Range>();
@@ -45,11 +41,11 @@ const Editor = () => {
           class: "mx-auto rounded",
         },
       }),
-      TitapImage.configure({
-        HTMLAttributes: {
-          class: "mx-auto",
-        },
-      }),
+      // TitapImage.configure({
+      //   HTMLAttributes: {
+      //     class: "mx-auto",
+      //   },
+      // }),
     ],
 
     // editorProps: {
@@ -67,13 +63,13 @@ const Editor = () => {
     // },
   });
 
-  const handleImageSelection = (result: ImageSelectionResult) => {
-    editor
-      ?.chain()
-      .focus()
-      .setImage({ src: result.src, alt: result.altText })
-      .run();
-  };
+  // const handleImageSelection = (result: ImageSelectionResult) => {
+  //   editor
+  //     ?.chain()
+  //     .focus()
+  //     .setImage({ src: result.src, alt: result.altText })
+  //     .run();
+  // };
 
   useEffect(() => {
     if (editor && selectionRange) {

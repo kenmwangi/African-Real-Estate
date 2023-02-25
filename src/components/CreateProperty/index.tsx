@@ -2,16 +2,7 @@ import React, { useState } from "react";
 
 const CreateProperty = () => {
   const [title, setTitle] = useState("");
-<<<<<<< HEAD
-  return (
-    <div>
-      <textarea
-        name="title"
-        value={title}
-        placeholder="Property Title"
-      ></textarea>
-    </div>
-=======
+
   const [isDisabled, setIsDisabled] = useState(false);
   return (
     <>
@@ -42,7 +33,6 @@ const CreateProperty = () => {
         </div>
       </form>
     </>
->>>>>>> e0d9ca0 (fixed importation errors)
   );
 };
 
