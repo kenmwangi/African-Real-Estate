@@ -1,6 +1,6 @@
 import type { categories } from "src/constants/config";
 
-type DateTime = {
+export type DateTime = {
   justDate: Date | null;
   dateTime: Date | null;
 };
