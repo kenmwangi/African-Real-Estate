@@ -42,19 +42,19 @@ const Editor = () => {
       }),
     ],
 
-    editorProps: {
-      handleClick(view, pos, event) {
-        const { state } = view;
-        const selectionRange = getMarkRange(
-          state.doc.resolve(pos),
-          state.schema.marks.link
-        );
-        if (selectionRange) setSelectionRange(selectionRange);
-      },
-      attributes: {
-        class: "prose prose-lg focus:outline-none max-w-full mx-auto h-full",
-      },
-    },
+    // editorProps: {
+    //   handleClick(view, pos, event) {
+    //     const { state } = view;
+    //     const selectionRange = getMarkRange(
+    //       state.doc.resolve(pos),
+    //       state.schema.marks.link
+    //     );
+    //     if (selectionRange) setSelectionRange(selectionRange);
+    //   },
+    //   attributes: {
+    //     class: "prose prose-lg focus:outline-none max-w-full mx-auto h-full",
+    //   },
+    // },
   });
 
   useEffect(() => {
