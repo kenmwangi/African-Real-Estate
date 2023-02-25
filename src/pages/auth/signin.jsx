@@ -1,7 +1,14 @@
-import { getProviders, signIn, signOut, useSession } from "next-auth/react";
+import {
+  getProviders,
+  signIn,
+  signOut,
+  getServerSession,
+  useSession,
+} from "next-auth/react";
 import { AppProps } from "next/app";
 import Image from "next/image";
 import Link from "next/link";
+import { authOptions } from "src/server/auth";
 // import { GetServerSideProps } from "next";
 
 const SigninPage = ({ providers }) => {

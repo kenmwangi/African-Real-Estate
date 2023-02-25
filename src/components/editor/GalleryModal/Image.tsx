@@ -15,8 +15,8 @@ const Image: React.FC<Props> = ({ src, selected, onClick }): JSX.Element => {
         width={200}
         height={200}
         alt="gallery"
-        objectFit="cover"
-        className="bg-slate-100 transition hover:scale-110"
+        className="bg-slate-100 
+        object-cover transition hover:scale-110"
       />
 
       <div className="absolute top-2 left-2">

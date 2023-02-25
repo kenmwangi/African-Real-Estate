@@ -10,10 +10,11 @@ import Underline from "@tiptap/extension-underline";
 import Placeholder from "@tiptap/extension-placeholder";
 import Link from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
+import TitapImage from "@tiptap/extension-image";
 
 import ToolBar from "./ToolBar/";
 import EditLink from "./Link/EditLink";
-import GalleryModal from "./GalleryModal";
+import GalleryModal, { type ImageSelectionResult } from "./GalleryModal";
 
 const Editor = () => {
   const [selectionRange, setSelectionRange] = useState<Range>();
@@ -40,6 +41,11 @@ const Editor = () => {
           class: "mx-auto rounded",
         },
       }),
+      TitapImage.configure({
+        HTMLAttributes: {
+          class: "mx-auto",
+        },
+      }),
     ],
 
     // editorProps: {
@@ -56,6 +62,14 @@ const Editor = () => {
     //   },
     // },
   });
+
+  const handleImageSelection = (result: ImageSelectionResult) => {
+    editor
+      ?.chain()
+      .focus()
+      .setImage({ src: result.src, alt: result.altText })
+      .run();
+  };
 
   useEffect(() => {
     if (editor && selectionRange) {
@@ -75,10 +89,12 @@ const Editor = () => {
         <EditorContent editor={editor} />
       </div>
 
-      <GalleryModal
+      {/* <GalleryModal
         visible={showGallery}
+        onSelect={handleImageSelection}
+        // onImageSelect={}
         onClose={() => setShowGallery(false)}
-      />
+      /> */}
     </>
   );
 };

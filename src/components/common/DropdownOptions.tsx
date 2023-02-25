@@ -14,7 +14,7 @@ const DropdownOptions: React.FC<Props> = ({ head, options }) => {
     >
       {head}
       {showOptions && (
-        <div className="border-primary-dark absolute top-full right-2 z-10 mt-4 min-w-max rounded border-2 bg-white text-left">
+        <div className="absolute top-full right-2 z-10 mt-4 min-w-max rounded border-2 border-slate-700 bg-white text-left">
           <ul className="space-y-3 p-3">
             {options.map(({ label, onClick }, index) => {
               return (
