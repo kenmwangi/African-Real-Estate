@@ -29,7 +29,9 @@
     "src/components/MessageWidget.jsx",
     "src/pages/contact.jsx",
     "src/pages/auth/signin.jsx",
-    "src/components/Header.jsx"
+    "src/components/Header.jsx",
+    "src/components/CreateProperty/index.jsx",
+    "src/components/FormAlert/index.jsx"
   ],
   "exclude": ["node_modules"]
 }
