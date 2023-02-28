@@ -18,7 +18,7 @@ const navLinks = [
 ];
 
 function Header() {
-  const { data: sessionData } = useSession();
+  // const { data: sessionData } = useSession();
 
   return (
     <header className="">
@@ -81,7 +81,7 @@ function Header() {
                           </Link>
                         );
                       })}
-                      <p className="text-xs text-gray-700">
+                      {/* <p className="text-xs text-gray-700">
                         {sessionData && (
                           <span>
                             Welcome, <strong>{sessionData.user?.name}</strong>{" "}
@@ -96,7 +96,7 @@ function Header() {
                         className="mt-3 w-full rounded-md bg-indigo-500 px-6 py-2 text-center text-white transition-colors hover:bg-indigo-600 lg:ml-5"
                       >
                         {sessionData ? "Sign out" : "Sign in"}
-                      </Link>
+                      </Link> */}
 
                       {/* <Link href="/signin">Sign In</Link> */}
                     </>
@@ -128,7 +128,7 @@ function Header() {
           </div>
 
           <div className="nav__item mr-3 flex hidden  items-center space-x-3 lg:flex">
-            <p className="text-xs text-gray-700">
+            {/* <p className="text-xs text-gray-700">
               {sessionData && (
                 <span>
                   Welcome, <strong>{sessionData.user?.name}</strong>{" "}
@@ -142,6 +142,7 @@ function Header() {
             >
               {sessionData ? "Sign out" : "Sign in"}
             </Link>
+          */}
           </div>
         </nav>
       </div>

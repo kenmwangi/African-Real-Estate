@@ -34,6 +34,7 @@ import {
 } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
 import Compressor from "compressorjs";
+import UploadImage from "../../lib/uploadImage";
 import FormAlert from "../../components/FormAlert";
 
 import { categoryOptions } from "../../assets/categories";
@@ -53,6 +54,7 @@ const CreateProperty = () => {
   } = useForm({ mode: "all" });
 
   const [image, setImage] = useState();
+
   const [page, setPage] = useState(0);
   const [preview, setPreview] = useState();
 
@@ -85,8 +87,9 @@ const CreateProperty = () => {
     if (page === 0) return;
     setPage((page) => page - 1);
   };
+
   const onSubmit = async (data) => {
-    if (!image) {
+    if (!data) {
       toast({
         title: "No Image Selected",
         description: "Please choose a display image for the estate",
@@ -101,7 +104,7 @@ const CreateProperty = () => {
       totalRating: 0,
       reviews: 0,
     };
-    // await UploadImage(image, estateData, toast);
+    await UploadImage(image, estateData, toast);
   };
   return (
     <>
@@ -208,15 +211,15 @@ const CreateProperty = () => {
                 {errors.address && <FormAlert title={errors.address.message} />}
               </FormControl>
               <FormControl>
-                <FormLabel>State/Province</FormLabel>
+                <FormLabel>State/County</FormLabel>
                 <Input
                   variant="flushed"
-                  name="state/province"
+                  name="state/county"
                   {...register("province", {
-                    required: "Please enter a state or province",
+                    required: "Please enter a state or county",
                     minLength: {
-                      value: 3,
-                      message: "State/Province name too short",
+                      value: 1,
+                      message: "State/County name too short",
                     },
                   })}
                 />
@@ -394,7 +397,7 @@ const CreateProperty = () => {
               <Heading>Appliances</Heading>
               <Stack spacing={4} direction={["column", "row"]}>
                 <Checkbox name="cooling" {...register("cooling")}>
-                  Cooling
+                  Swimming Pool
                 </Checkbox>
                 <Checkbox name="heating" {...register("heating")}>
                   Heating
@@ -407,6 +410,9 @@ const CreateProperty = () => {
                 </Checkbox>
                 <Checkbox name="parking" {...register("parking")}>
                   Parking
+                </Checkbox>
+                <Checkbox name="parking" {...register("parking")}>
+                  Flower Garden
                 </Checkbox>
               </Stack>
             </>
@@ -487,7 +493,7 @@ const CreateProperty = () => {
                   <Input
                     variant="flushed"
                     name="telephone"
-                    placeholder="ex: +237XXXXX..."
+                    placeholder="ex: +254XXXXX..."
                     {...register("telephone", {
                       required: "Enter contact telephone number",
                       pattern: {

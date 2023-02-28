@@ -1,7 +1,12 @@
-import { type AppType } from "next/app";
+import { type AppProps } from "next/app";
+import React, { useState } from "react";
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { ChakraProvider } from "@chakra-ui/react";
+
+import { SessionContextProvider } from "@supabase/auth-helpers-react";
+import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import type { Database } from "types_db";
 
 // import { api } from "../utils/api";
 import { trpc } from "src/utils/trpc";
@@ -19,21 +24,19 @@ const inter = Raleway({
   variable: "--font-inter",
 });
 
-const MyApp: AppType<{ session: Session | null }> = ({
-  Component,
-  pageProps: { session, ...pageProps },
-}) => {
+export default function MyApp({ Component, pageProps }: AppProps) {
+  const [supabaseClient] = useState(() =>
+    createBrowserSupabaseClient<Database>()
+  );
   return (
     <ChakraProvider>
-      <SessionProvider session={session}>
+      <SessionContextProvider supabaseClient={supabaseClient}>
         <div className={`${inter.variable}`}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
         </div>
-      </SessionProvider>
+      </SessionContextProvider>
     </ChakraProvider>
   );
-};
-
-export default trpc.withTRPC(MyApp);
+}

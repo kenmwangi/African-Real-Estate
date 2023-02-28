@@ -27,6 +27,8 @@
     "**/*.cjs",
     "**/*.mjs",
     "src/components/MessageWidget.jsx",
+    "src/lib/firebaseClientInit.js",
+    "src/lib/uploadImage.js",
     "src/pages/contact.jsx",
     "src/pages/auth/signin.jsx",
     "src/components/Header.jsx",
