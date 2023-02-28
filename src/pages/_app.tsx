@@ -1,10 +1,13 @@
 import { type AppProps } from "next/app";
 import React, { useState } from "react";
-import { type Session } from "next-auth";
+
 import { SessionProvider } from "next-auth/react";
 import { ChakraProvider } from "@chakra-ui/react";
 
-import { SessionContextProvider } from "@supabase/auth-helpers-react";
+import {
+  SessionContextProvider,
+  type Session,
+} from "@supabase/auth-helpers-react";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import type { Database } from "types_db";
 
@@ -24,13 +27,17 @@ const inter = Raleway({
   variable: "--font-inter",
 });
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  const [supabaseClient] = useState(() =>
-    createBrowserSupabaseClient<Database>()
-  );
+export default function MyApp({
+  Component,
+  pageProps,
+}: AppProps<{ initialSession: Session }>) {
+  const [supabaseClient] = useState(() => createBrowserSupabaseClient());
   return (
     <ChakraProvider>
-      <SessionContextProvider supabaseClient={supabaseClient}>
+      <SessionContextProvider
+        supabaseClient={supabaseClient}
+        initialSession={pageProps.initialSession}
+      >
         <div className={`${inter.variable}`}>
           <Layout>
             <Component {...pageProps} />

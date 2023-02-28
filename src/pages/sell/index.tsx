@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import GenericHero from "src/components/GenericHero";
+import { useSession } from "@supabase/auth-helpers-react";
+import SigninPage from "../auth/signin";
 
 const pricingPlans = [
   { id: 1, plan: "Basic", price: "19", feature: "Sell your house" },
@@ -18,7 +20,14 @@ const pricingPlans = [
   },
 ];
 
-const index = () => {
+const SellPage = () => {
+  const session = useSession();
+
+  console.log(session);
+
+  if (!session) {
+    return <SigninPage />;
+  }
   return (
     <>
       <section className="mb-20 flex flex-col  items-center justify-center pb-20">
@@ -86,4 +95,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default SellPage;
