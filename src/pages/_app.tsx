@@ -9,10 +9,6 @@ import {
   type Session,
 } from "@supabase/auth-helpers-react";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import type { Database } from "types_db";
-
-// import { api } from "../utils/api";
-import { trpc } from "src/utils/trpc";
 
 import "../styles/globals.css";
 import "../styles/Calendar.css";
