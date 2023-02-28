@@ -34,7 +34,7 @@ import {
 } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
 import Compressor from "compressorjs";
-import UploadImage from "../../lib/uploadImage";
+// import UploadImage from "../../lib/uploadImage";
 import FormAlert from "../../components/FormAlert";
 
 import { categoryOptions } from "../../assets/categories";
@@ -104,7 +104,7 @@ const CreateProperty = () => {
       totalRating: 0,
       reviews: 0,
     };
-    await UploadImage(image, estateData, toast);
+    // await UploadImage(image, estateData, toast);
   };
   return (
     <>
