@@ -1,12 +1,12 @@
-import React from 'react'
-import Listing from '../listing'
+import React from "react";
+import Listing from "../listing";
 
-const index = () => {
+const BuyPage = () => {
   return (
     <div>
-        <Listing />
+      <Listing />
     </div>
-  )
-}
+  );
+};
 
-export default index
+export default BuyPage;

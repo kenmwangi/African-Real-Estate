@@ -13,7 +13,7 @@ const ActionButton: FC<Props> = ({
   busy = false,
   title,
   onClick,
-}): JSX.Element => {
+}) => {
   return (
     <button
       className="text-highlight-dark bg-action flex w-full items-center justify-center space-x-2 rounded px-6 py-2 font-semibold transition duration-100 hover:scale-[0.97]"

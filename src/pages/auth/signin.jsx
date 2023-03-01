@@ -1,10 +1,3 @@
-import {
-  getProviders,
-  signIn,
-  signOut,
-  getServerSession,
-  useSession,
-} from "next-auth/react";
 import { useRouter } from "next/router";
 import { AppProps } from "next/app";
 import Image from "next/image";
@@ -86,10 +79,3 @@ const SigninPage = () => {
 };
 
 export default SigninPage;
-
-export const getServerSideProps = async (context) => {
-  const providers = await getProviders();
-  return {
-    props: { providers },
-  };
-};

@@ -93,7 +93,7 @@ const CreateProperty = () => {
       toast({
         title: "No Image Selected",
         description: "Please choose a display image for the estate",
-        status: error,
+        // status: error,
         duration: 5000,
         isClosable: true,
       });

@@ -48,7 +48,6 @@ const SellPage = () => {
             <table className="whitespace-no-wrap mt-10 w-full table-fixed text-left">
               <thead>
                 <tr className="block md:table-row">
-                  {/* <th className="hidden md:table-cell">​</th> */}
                   {pricingPlans.map((pricingPlan) => {
                     const { id, plan, price, feature } = pricingPlan;
                     return (

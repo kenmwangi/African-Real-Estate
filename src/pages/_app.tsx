@@ -11,7 +11,7 @@ import {
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
 import "../styles/globals.css";
-import "../styles/Calendar.css";
+
 import "../styles/Spinner.css";
 import Layout from "src/components/Layout";
 

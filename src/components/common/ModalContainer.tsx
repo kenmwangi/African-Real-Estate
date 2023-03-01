@@ -20,7 +20,6 @@ const ModalContainer: FC<Props> = ({
   }, [onClose]);
 
   const handleClick = ({ target }: any) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     if (target.id === containerId) handleClose();
   };
 
