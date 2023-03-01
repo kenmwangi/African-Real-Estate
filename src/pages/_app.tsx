@@ -29,17 +29,17 @@ export default function MyApp({
 }: AppProps<{ initialSession: Session }>) {
   const [supabaseClient] = useState(() => createBrowserSupabaseClient());
   return (
-    <ChakraProvider>
-      <SessionContextProvider
-        supabaseClient={supabaseClient}
-        initialSession={pageProps.initialSession}
-      >
+    <SessionContextProvider
+      supabaseClient={supabaseClient}
+      initialSession={pageProps.initialSession}
+    >
+      <ChakraProvider>
         <div className={`${inter.variable}`}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
         </div>
-      </SessionContextProvider>
-    </ChakraProvider>
+      </ChakraProvider>
+    </SessionContextProvider>
   );
 }

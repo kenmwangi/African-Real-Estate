@@ -9,7 +9,7 @@ import RequestedOffers from "src/components/RequestedOffers";
 import FAQ from "src/components/FAQ";
 import MessageWidget from "src/components/MessageWidget.jsx";
 
-const HomePage: NextPage = () => {
+const HomePage = () => {
   // const [date, setDate] = useState<DateType>({
   //   justDate: null,
   //   dateTime: null,
