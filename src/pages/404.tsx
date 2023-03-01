@@ -6,7 +6,7 @@ const NotFoundPage = () => {
     <div>
       <section className="mx-auto mt-3 flex max-w-6xl flex-col items-center justify-center py-4">
         <h3 className="py-10 text-center text-xl font-bold uppercase leading-10 text-slate-700 md:text-2xl lg:text-3xl">
-          Oops, wrong address. The requested page does not exists.
+          Ooops!, wrong address. The requested page does not exists.
         </h3>
         <Image
           width={450}
