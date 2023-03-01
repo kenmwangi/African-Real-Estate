@@ -10,10 +10,6 @@ import FAQ from "src/components/FAQ";
 import MessageWidget from "src/components/MessageWidget.jsx";
 
 const HomePage = () => {
-  // const [date, setDate] = useState<DateType>({
-  //   justDate: null,
-  //   dateTime: null,
-  // });
   return (
     <div className="pb-40">
       <Hero />
