@@ -13,8 +13,6 @@ const SigninPage = () => {
     await supabase.auth.signInWithOAuth({
       provider: "google",
     });
-
-    return router.push("/sell/sell-your-property");
   }
   return (
     <section className="mx-auto mb-20 mt-16 flex w-full max-w-3xl flex-col items-center justify-center rounded bg-white  py-16 px-4 shadow lg:max-w-6xl">

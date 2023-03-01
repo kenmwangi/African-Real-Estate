@@ -28,8 +28,6 @@ function Header() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
     });
-
-    return router.push("/sell/sell-your-property");
   }
 
   async function signOut() {
