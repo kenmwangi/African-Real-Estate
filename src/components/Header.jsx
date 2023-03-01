@@ -111,7 +111,6 @@ function Header() {
                       >
                         {session ? "Sign out" : "Sign in"}
                       </Link>{" "}
-                      {/* *<Link href="/signin">Sign In</Link> */}
                     </>
                   </Disclosure.Panel>
                 </div>
