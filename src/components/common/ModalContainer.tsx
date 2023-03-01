@@ -19,9 +19,9 @@ const ModalContainer: FC<Props> = ({
     onClose && onClose();
   }, [onClose]);
 
-  const handleClick = ({ target }: any) => {
-    if (target.id === containerId) handleClose();
-  };
+  // const handleClick = ({ target }: any) => {
+  //   if (target.id === containerId) handleClose();
+  // };
 
   useEffect(() => {
     const closeModal = ({ key }: any) => key === "Escape" && handleClose();
@@ -34,7 +34,7 @@ const ModalContainer: FC<Props> = ({
   return (
     <div
       id={containerId}
-      onClick={handleClick}
+      // onClick={handleClick}
       className="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-5 backdrop-blur-[2px] dark:bg-opacity-5"
     >
       {children}
