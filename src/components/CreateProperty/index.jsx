@@ -33,8 +33,7 @@ import {
   CheckCircleIcon,
 } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
-import Compressor from "compressorjs";
-import UploadImage from "../../lib/uploadImage";
+
 import FormAlert from "../../components/FormAlert";
 
 import { categoryOptions } from "../../assets/categories";
@@ -45,7 +44,7 @@ import Head from "next/head";
 import React, { createRef, useState } from "react";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 
-const CreateProperty = () => {
+const CreateProperty = ({ onPost }) => {
   const supabase = useSupabaseClient();
   const session = useSession();
 
@@ -65,6 +64,7 @@ const CreateProperty = () => {
 
   const [page, setPage] = useState(0);
   const [preview, setPreview] = useState();
+  const [houses, setHouses] = useState("");
 
   const numericPattern = /^-?\d*\.?\d*$/;
 
@@ -123,7 +123,20 @@ const CreateProperty = () => {
     setPage((page) => page - 1);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async () => {
+    const { data, error } = await supabase
+      .from("houses")
+      .insert({ houses, photos: uploads })
+      .select()
+      .then((response) => {
+        if (!response.error) {
+          setContent("");
+          setUploads([]);
+          if (onPost) {
+            onPost();
+          }
+        }
+      });
     if (!data) {
       toast({
         title: "No Image Selected",
@@ -143,7 +156,7 @@ const CreateProperty = () => {
     console.log(estateData);
     console.log(uploads);
     console.log(toast);
-    return { uploads, estateData, toast };
+    return { data, estateData, toast };
   };
   return (
     <>

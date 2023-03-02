@@ -27,6 +27,7 @@
     "**/*.cjs",
     "**/*.mjs",
     "src/components/MessageWidget.jsx",
+    "src/components/FeaturedListingCard.jsx",
     "src/lib/firebaseClientInit.js",
     "src/lib/uploadImage.js",
     "src/lib/mongodb/mongodbClient.js",
@@ -37,9 +38,12 @@
     "src/pages/api/estate/insert.js",
     "src/pages/api/estate/[id].js",
     "src/components/Header.jsx",
+    "src/pages/listing/index.jsx",
     "src/components/CreateProperty/index.jsx",
     "src/pages/_document.jsx",
-    "src/components/FormAlert/index.jsx"
+    "src/components/FormAlert/index.jsx",
+    "src/pages/listing/index.jsx",
+    "src/components/FeaturedListingCard.jsx"
   ],
   "exclude": ["node_modules"]
 }

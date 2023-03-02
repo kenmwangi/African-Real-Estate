@@ -1,53 +1,12 @@
-import React from "react";
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+import React, { useEffect, useState } from "react";
+import CreateProperty from "src/components/CreateProperty";
 import FeaturedListingCard from "src/components/FeaturedListingCard";
 import FilterProperty from "src/components/Filter";
 import GenericHero from "src/components/GenericHero";
+import SigninPage from "../auth/signin";
 
 const properties = [
-  {
-    id: 1,
-    name: "2 BHK Apartment",
-    price: "$2660",
-    image: "/photos/property1.jpg",
-    type: "Buy",
-    location: "Karen",
-    beds: "2",
-    baths: "2",
-    area: "2,000 SF",
-  },
-  {
-    id: 2,
-    name: "2 BHK Villa",
-    price: "$14650",
-    image: "/photos/property2.jpg",
-    type: "Buy",
-    location: "Tilisi",
-    beds: "2",
-    baths: "2",
-    area: "2,000 SF",
-  },
-  {
-    id: 3,
-    name: "1 BHK Independent House",
-    price: "$149",
-    image: "/photos/property3.jpg",
-    type: "Buy",
-    location: "Kitengela",
-    beds: "1",
-    baths: "1",
-    area: "1,000 SF",
-  },
-  {
-    id: 4,
-    name: "2 BHK Apartment",
-    price: "$2999",
-    image: "/photos/property4.jpg",
-    type: "Buy",
-    location: "Kitusuru",
-    beds: "2",
-    baths: "2",
-    area: "2,000 SF",
-  },
   //   {
   //     id: 5,
   //     name: "2 BHK Villa",
@@ -73,6 +32,29 @@ const properties = [
 ];
 
 const Listing = () => {
+  const session = useSession();
+  const supabase = useSupabaseClient();
+  const [houses, setHouses] = useState(null);
+  const [fetchError, setFetchError] = useState(null);
+
+  // check if user is signed in
+  // if (!session) {
+  //   return <SigninPage />;
+  // }
+  const fetchHouses = () => {
+    supabase
+      .from("houses")
+      .select()
+      .order("created_at", { ascending: false })
+      .then((house) => {
+        console.log("houses", house);
+        setHouses(house.data);
+      });
+  };
+  useEffect(() => {
+    fetchHouses();
+  }, []);
+
   return (
     <section className="pb-20">
       <GenericHero title="Property Listing" />
@@ -110,10 +92,14 @@ const Listing = () => {
               <FilterProperty />
             </div>
             <div className="grid w-full gap-8 lg:w-8/12 lg:grid-cols-2">
-              {properties.map((property) => {
+              {/* <CreateProperty onPost={fetchHouses} /> */}
+              {houses?.length > 0 &&
+                houses.map((house) => (
+                  <FeaturedListingCard key={house.id} {...house} />
+                ))}
+              {/* {properties.map((property) => {
                 const { id } = property;
-                return <FeaturedListingCard key={id} {...property} />;
-              })}
+              })} */}
             </div>
           </article>
         </div>

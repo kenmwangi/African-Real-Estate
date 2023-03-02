@@ -2,46 +2,37 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
 
-type FeaturedListingCardProps = {
-  image: string;
-  type: string;
-  price: string;
-  beds: string;
-  baths: string;
-  name: string;
-  area: string;
-  location: string;
-};
+// type FeaturedListingCardProps = {
+//   image: string;
+//   type: string;
+//   price: string;
+//   beds: string;
+//   baths: string;
+//   name: string;
+//   area: string;
+//   location: string;
+// };
 
-const FeaturedListingCard = ({
-  image,
-  type,
-  price,
-  beds,
-  baths,
-  name,
-  area,
-  location,
-}: FeaturedListingCardProps) => {
+const FeaturedListingCard = (props) => {
+  const { image, price, bedrooms, title, baths, surface_area, province } =
+    props;
   // const [isZoomed, setIsZoomed] = useState(false);
   return (
     <div className="overflow-hidden rounded-t-2xl border-b border-r border-l bg-white transition-all duration-150 ease-out hover:shadow-xl hover:shadow-gray-200">
       <div className="relative">
         <div className={`relative aspect-[16/9]`}>
-          {image && (
-            <Image
-              src={image}
-              fill
-              className="rounded-t-2xl object-cover"
-              alt="Property Photo"
-            />
-          )}
+          <img
+            src={image}
+            // fill
+            className="rounded-t-2xl object-cover"
+            alt="Property Photo"
+          />
         </div>
         <div className="pointer-events-none absolute inset-0">
-          <div className="from-transparent-5 flex h-full flex-col justify-between bg-gradient-to-t to-transparent px-5 py-5">
+          <div className="from-transparent-5 bg-gradient-to-t flex h-full flex-col justify-between to-transparent px-5 py-5">
             <div>
               <span className="rounded-full bg-red-500 bg-opacity-90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white">
-                {type}
+                Buy
               </span>
             </div>
             <span className="text-2xl font-semibold text-white">{price}</span>
@@ -69,15 +60,15 @@ const FeaturedListingCard = ({
       </div>
       <div className="relative">
         <div className="px-5 py-5">
-          <h4 className="text-lg font-semibold">{name}</h4>
-          <p className="mt-1 text-sm text-gray-500">{location}</p>
+          <h4 className="text-lg font-semibold">{title}</h4>
+          <p className="mt-1 text-sm text-gray-500">{province}</p>
         </div>
         <div className="flex divide-x divide-gray-200 border-t border-gray-100 text-sm">
           <div className="flex flex-1 items-center justify-center px-2 py-3 text-gray-500">
-            {beds} Beds
+            {bedrooms} Beds
           </div>
           <div className="flex flex-1 items-center justify-center px-2 py-3 text-gray-500">
-            {area}
+            {surface_area} sqft
           </div>
           <div className="hidden flex-1 items-center justify-center px-2 py-3 text-gray-500 sm:flex">
             {baths} Bath
@@ -85,7 +76,7 @@ const FeaturedListingCard = ({
           <div className="flex h-full flex-1 items-center justify-end py-3 pr-4 text-gray-600">
             <Link href="/listing/details">
               <button className="ml-3 rounded-full bg-cyan-200 px-3 py-1.5 text-xs font-medium text-cyan-900 focus:outline-none">
-                Details
+                Property Details
               </button>
             </Link>
           </div>
