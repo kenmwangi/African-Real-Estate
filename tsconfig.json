@@ -31,12 +31,14 @@
     "src/lib/uploadImage.js",
     "src/lib/mongodb/mongodbClient.js",
     "src/pages/contact.jsx",
+    "src/pages/_document.jsx",
     "src/pages/auth/signin.jsx",
     "src/pages/api/estate/index.js",
     "src/pages/api/estate/insert.js",
     "src/pages/api/estate/[id].js",
     "src/components/Header.jsx",
     "src/components/CreateProperty/index.jsx",
+    "src/pages/_document.jsx",
     "src/components/FormAlert/index.jsx"
   ],
   "exclude": ["node_modules"]

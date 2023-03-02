@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { NextPage } from "next";
-
+import styled from "styled-components";
 // import { type DateType } from "src/utils/types";
 import Hero from "src/components/Hero";
 import FeaturedListing from "src/components/FeaturedListing";

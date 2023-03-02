@@ -34,16 +34,21 @@ import {
 } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
 import Compressor from "compressorjs";
-// import UploadImage from "../../lib/uploadImage";
+import UploadImage from "../../lib/uploadImage";
 import FormAlert from "../../components/FormAlert";
 
 import { categoryOptions } from "../../assets/categories";
 import { countryOptions } from "../../assets/countries";
+import { v4 as uuidv4 } from "uuid";
 
 import Head from "next/head";
 import React, { createRef, useState } from "react";
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 
 const CreateProperty = () => {
+  const supabase = useSupabaseClient();
+  const session = useSession();
+
   const imageInputRef = createRef();
   const toast = useToast();
 
@@ -55,6 +60,9 @@ const CreateProperty = () => {
 
   const [image, setImage] = useState();
 
+  const [uploads, setUploads] = useState([]);
+  const [isUploading, setIsUploading] = useState(false);
+
   const [page, setPage] = useState(0);
   const [preview, setPreview] = useState();
 
@@ -65,18 +73,45 @@ const CreateProperty = () => {
 
   const phonePattern = /^\+(?:[0-9] ?){8,14}[0-9]$/;
 
-  const handleImageChange = (event) => {
-    if (event.target.files[0]) {
-      const image = event.target.files[0];
-      new Compressor(image, {
-        quality: 0.8,
-        success: (compressedImage) => {
-          setImage(compressedImage);
-          setPreview(URL.createObjectURL(compressedImage));
-        },
-      });
+  // const handleImageChange = (event) => {
+  //   if (event.target.files[0]) {
+  //     const image = event.target.files[0];
+  //     new Compressor(image, {
+  //       quality: 0.8,
+  //       success: (compressedImage) => {
+  //         setImage(compressedImage);
+  //         setPreview(URL.createObjectURL(compressedImage));
+  //       },
+  //     });
+  //   }
+  // };
+
+  async function handleImageChange(ev) {
+    const files = ev.target.files;
+    if (files.length > 0) {
+      setIsUploading(true);
+      for (const file of files) {
+        const newName = Date.now() + file.name;
+        const result = await supabase.storage
+          .from("photos")
+          .upload(newName, file);
+        if (result.data) {
+          const url =
+            process.env.NEXT_PUBLIC_SUPABASE_URL +
+            "/storage/v1/object/public/photos/" +
+            result.data.path;
+          setUploads((prevUploads) => [...prevUploads, url]);
+        } else {
+          console.log(result);
+        }
+      }
+      setIsUploading(false);
     }
-  };
+  }
+
+  // const uploadImage = async(imageData, estateData, toast) => {
+
+  // }
 
   const goNextPage = () => {
     if (page === 6) return;
@@ -88,7 +123,7 @@ const CreateProperty = () => {
     setPage((page) => page - 1);
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     if (!data) {
       toast({
         title: "No Image Selected",
@@ -104,7 +139,11 @@ const CreateProperty = () => {
       totalRating: 0,
       reviews: 0,
     };
-    // await UploadImage(image, estateData, toast);
+
+    console.log(estateData);
+    console.log(uploads);
+    console.log(toast);
+    return { uploads, estateData, toast };
   };
   return (
     <>
@@ -422,7 +461,7 @@ const CreateProperty = () => {
           {page === 5 && (
             <>
               <Heading>Media</Heading>
-              {preview && (
+              {/* {preview && (
                 <Image
                   alt="estate_img"
                   src={preview}
@@ -431,13 +470,31 @@ const CreateProperty = () => {
                   objectFit="cover"
                   alignSelf="center"
                 />
+
+              )} */}
+
+              {isUploading && <div>Uploading... this will take a second</div>}
+              {uploads.length > 0 && (
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  {uploads.map((upload) => (
+                    <div key={upload}>
+                      <img
+                        src={upload}
+                        alt="Upload"
+                        className="h-24 rounded-md object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
               )}
+
               <Text color="gray.500" textAlign="center">
                 Select display image
               </Text>
               <input
                 ref={imageInputRef}
                 type="file"
+                multiple
                 hidden
                 onChange={handleImageChange}
               />
