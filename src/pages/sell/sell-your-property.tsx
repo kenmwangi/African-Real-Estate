@@ -8,7 +8,7 @@ const SellYourPropertyPage = () => {
   return (
     <Container className="mb-20 mt-20 px-10">
       {/* <Editor /> */}
-      {/* <CreateProperty /> */}
+      <CreateProperty />
       {/* <AdvertiseForm /> */}
     </Container>
   );

@@ -44,7 +44,7 @@ import Head from "next/head";
 import React, { createRef, useState } from "react";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 
-const CreateProperty = ({ onPost }) => {
+const CreateProperty = () => {
   const supabase = useSupabaseClient();
   const session = useSession();
 
@@ -123,11 +123,11 @@ const CreateProperty = ({ onPost }) => {
     setPage((page) => page - 1);
   };
 
-  const onSubmit = async () => {
-    const { data, error } = await supabase
+  const onSubmit = (data) => {
+    supabase
       .from("houses")
       .insert({ houses, photos: uploads })
-      .select()
+      .select("*")
       .then((response) => {
         if (!response.error) {
           setContent("");
