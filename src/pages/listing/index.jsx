@@ -31,6 +31,8 @@ const properties = [
   //   },
 ];
 
+// This is listing men!
+
 const Listing = () => {
   const session = useSession();
   const supabase = useSupabaseClient();
