@@ -34,25 +34,16 @@ const properties = [
 const Listing = () => {
   const session = useSession();
   const supabase = useSupabaseClient();
-  const [houses, setHouses] = useState(null);
-  const [fetchError, setFetchError] = useState(null);
 
-  // check if user is signed in
-  // if (!session) {
-  //   return <SigninPage />;
-  // }
-  const fetchHouses = () => {
+  const [properties, setProperties] = useState([]);
+
+  useEffect(() => {
     supabase
       .from("houses")
       .select()
-      .order("created_at", { ascending: false })
-      .then((house) => {
-        console.log("houses", house);
-        setHouses(house.data);
+      .then((result) => {
+        setProperties(result.data);
       });
-  };
-  useEffect(() => {
-    fetchHouses();
   }, []);
 
   return (
@@ -93,10 +84,15 @@ const Listing = () => {
             </div>
             <div className="grid w-full gap-8 lg:w-8/12 lg:grid-cols-2">
               {/* <CreateProperty onPost={fetchHouses} /> */}
-              {houses?.length > 0 &&
-                houses.map((house) => (
-                  <FeaturedListingCard key={house.id} {...house} />
-                ))}
+
+              {properties.map((property) => {
+                return (
+                  <div key={property.id} className="bg-slate-700 text-white">
+                    <FeaturedListingCard {...property} />
+                  </div>
+                );
+              })}
+
               {/* {properties.map((property) => {
                 const { id } = property;
               })} */}

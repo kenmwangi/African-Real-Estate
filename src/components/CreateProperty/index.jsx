@@ -66,6 +66,29 @@ const CreateProperty = () => {
   const [preview, setPreview] = useState();
   const [houses, setHouses] = useState("");
 
+  // Testing data states (TO BE DELETED)
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState(0);
+
+  function createProperty(event) {
+    event.preventDefault();
+    supabase
+      .from("houses")
+      .insert({
+        author: session.user.id,
+        title,
+        price,
+      })
+      .then((res) => {
+        if (!res.error) {
+          setTitle("");
+          setPrice("");
+          alert("Property Created");
+        }
+      });
+  }
+
+  // RegEx for email and phone verification
   const numericPattern = /^-?\d*\.?\d*$/;
 
   const emailPattern =
@@ -164,10 +187,38 @@ const CreateProperty = () => {
         <title>Create Property Listing | African Real Estate</title>
       </Head>
 
+      {/* testing data */}
+
+      <form className="mb-20 grid gap-5">
+        <h2 className="mb-5 text-xl text-slate-800">
+          Enter Property Information below
+        </h2>
+        <input
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+          type="text"
+          className="h-14 w-full grow rounded-md border border-slate-400 p-3"
+          placeholder="Property Title"
+        />
+        <input
+          value={price}
+          onChange={(event) => setPrice(event.target.value)}
+          type="number"
+          placeholder="Price"
+          className="h-14 w-full grow rounded-md border border-slate-400 p-3"
+        />
+        <button
+          onClick={createProperty}
+          type="submit"
+          className="font-initial rounded-md bg-slate-700 p-3 text-xl text-white transition-colors hover:border-2 hover:border-slate-700 hover:bg-white hover:text-slate-700"
+        >
+          Submit Property
+        </button>
+      </form>
+
       {/* Multi-step form */}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      {/* <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={10} width="100%">
-          {/* Initial Page(Step) */}
           {page === 0 && (
             <>
               <Heading>Basic Information</Heading>
@@ -243,7 +294,6 @@ const CreateProperty = () => {
             </>
           )}
 
-          {/* Page 1 */}
           {page === 1 && (
             <>
               <Heading>Address Information</Heading>
@@ -315,7 +365,6 @@ const CreateProperty = () => {
             </>
           )}
 
-          {/* Page 2 */}
           {page === 2 && (
             <>
               <Heading>Property Information</Heading>
@@ -408,7 +457,6 @@ const CreateProperty = () => {
             </>
           )}
 
-          {/* Page 3 */}
           {page === 3 && (
             <>
               <Heading>Description</Heading>
@@ -443,7 +491,6 @@ const CreateProperty = () => {
             </>
           )}
 
-          {/* Page 4 */}
           {page === 4 && (
             <>
               <Heading>Appliances</Heading>
@@ -470,21 +517,9 @@ const CreateProperty = () => {
             </>
           )}
 
-          {/* Page 5 */}
           {page === 5 && (
             <>
               <Heading>Media</Heading>
-              {/* {preview && (
-                <Image
-                  alt="estate_img"
-                  src={preview}
-                  boxSize="sm"
-                  rounded="lg"
-                  objectFit="cover"
-                  alignSelf="center"
-                />
-
-              )} */}
 
               {isUploading && <div>Uploading... this will take a second</div>}
               {uploads.length > 0 && (
@@ -522,7 +557,6 @@ const CreateProperty = () => {
             </>
           )}
 
-          {/* Page 6 (last step) */}
           {page === 6 && (
             <>
               <Heading>Contact Information</Heading>
@@ -612,7 +646,7 @@ const CreateProperty = () => {
             </Button>
           )}
         </Stack>
-      </form>
+      </form> */}
     </>
   );
 };

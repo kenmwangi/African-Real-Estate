@@ -60,7 +60,7 @@ const FeaturedListingCard = (props) => {
       </div>
       <div className="relative">
         <div className="px-5 py-5">
-          <h4 className="text-lg font-semibold">{title}</h4>
+          <h4 className="text-lg font-semibold text-black">{title}</h4>
           <p className="mt-1 text-sm text-gray-500">{province}</p>
         </div>
         <div className="flex divide-x divide-gray-200 border-t border-gray-100 text-sm">

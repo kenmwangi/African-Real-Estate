@@ -64,7 +64,7 @@ function Header() {
         }
       });
   }, [session?.user.id, supabase]);
-  console.log(profile);
+
   return (
     <header className="">
       <div className="w-full shadow-sm">
