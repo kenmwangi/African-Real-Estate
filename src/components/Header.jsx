@@ -2,7 +2,7 @@ import { Disclosure } from "@headlessui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 import { Inter } from "@next/font/google";
 
@@ -23,6 +23,8 @@ function Header() {
   const router = useRouter();
   const session = useSession();
 
+  const [profile, setProfile] = useState(null);
+
   // Vercel preview URLs
 
   const getURL = () => {
@@ -41,16 +43,28 @@ function Header() {
   async function signInWithGoogle() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
-      options: {
-        redirectTo: getURL(),
-      },
     });
+    return router.push("/");
   }
 
   async function signOut() {
     await supabase.auth.signOut();
     return router.push("/");
   }
+
+  // checking the user logged in
+  useEffect(() => {
+    supabase
+      .from("profiles")
+      .select()
+      .eq("id", session?.user.id)
+      .then((result) => {
+        if (result.data) {
+          setProfile(result.data[0]);
+        }
+      });
+  }, [session?.user.id, supabase]);
+  console.log(profile);
   return (
     <header className="">
       <div className="w-full shadow-sm">
@@ -115,7 +129,7 @@ function Header() {
                       <p className="text-xs text-gray-700">
                         {session && (
                           <span>
-                            Welcome, <strong>{session.user.email}</strong>{" "}
+                            Welcome, <strong>{profile?.name}</strong>{" "}
                           </span>
                         )}
                       </p>
@@ -160,7 +174,7 @@ function Header() {
             <p className="text-xs text-gray-700">
               {session && (
                 <span>
-                  Welcome, <strong>{session.user.email}</strong>{" "}
+                  Welcome, <strong>{profile?.name}</strong>{" "}
                 </span>
               )}
             </p>
