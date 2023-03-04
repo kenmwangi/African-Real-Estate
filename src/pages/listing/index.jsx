@@ -43,6 +43,7 @@ const Listing = () => {
     supabase
       .from("houses")
       .select()
+      .order("created_at", { ascending: false })
       .then((result) => {
         setProperties(result.data);
       });
