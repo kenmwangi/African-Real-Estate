@@ -34,7 +34,13 @@ const FeaturedListingCard = (props) => {
             photos.map((photo) => {
               return (
                 <div key={photo}>
-                  <img src={photo} alt={photo} />
+                  {/* <img src={photo} alt={photo} /> */}
+                  <Image
+                    src={photo}
+                    fill
+                    className="object-cover"
+                    alt="Property Photo"
+                  />
                 </div>
               );
             })}

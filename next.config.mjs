@@ -20,7 +20,10 @@ const config = {
     defaultLocale: "en",
   },
   images: {
-    domains: ["africanestatebucket.s3.eu-west-2.amazonaws.com"],
+    domains: [
+      "africanestatebucket.s3.eu-west-2.amazonaws.com",
+      "nwesdwzcpcjwykhluheg.supabase.co",
+    ],
   },
 };
 
