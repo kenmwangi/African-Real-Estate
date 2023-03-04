@@ -24,6 +24,7 @@ function Header() {
   const session = useSession();
 
   const [profile, setProfile] = useState(null);
+  console.log(session);
 
   // Vercel preview URLs
 
@@ -54,16 +55,19 @@ function Header() {
 
   // checking the user logged in
   useEffect(() => {
+    if (!session?.user?.id) {
+      return;
+    }
     supabase
       .from("profiles")
       .select()
-      .eq("id", session?.user.id)
+      .eq("id", session.user.id)
       .then((result) => {
-        if (result.data) {
+        if (result.data.length) {
           setProfile(result.data[0]);
         }
       });
-  }, [session?.user.id, supabase]);
+  }, [session?.user?.id, supabase]);
 
   return (
     <header className="">
@@ -129,7 +133,10 @@ function Header() {
                       <p className="text-xs text-gray-700">
                         {session && (
                           <span>
-                            Welcome, <strong>{profile?.name}</strong>{" "}
+                            Welcome,{" "}
+                            <strong>
+                              {session?.user?.user_metadata.full_name}
+                            </strong>{" "}
                           </span>
                         )}
                       </p>
@@ -174,7 +181,8 @@ function Header() {
             <p className="text-xs text-gray-700">
               {session && (
                 <span>
-                  Welcome, <strong>{profile?.name}</strong>{" "}
+                  Welcome,{" "}
+                  <strong>{session?.user?.user_metadata.full_name}</strong>{" "}
                 </span>
               )}
             </p>
