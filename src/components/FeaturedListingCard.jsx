@@ -14,19 +14,36 @@ import Link from "next/link";
 // };
 
 const FeaturedListingCard = (props) => {
-  const { image, price, bedrooms, title, baths, surface_area, province } =
-    props;
+  const {
+    photos,
+    created_at,
+    title,
+    price,
+    author,
+    bedrooms,
+    baths,
+    surface_area,
+    province,
+  } = props;
   // const [isZoomed, setIsZoomed] = useState(false);
   return (
     <div className="overflow-hidden rounded-t-2xl border-b border-r border-l bg-white transition-all duration-150 ease-out hover:shadow-xl hover:shadow-gray-200">
       <div className="relative">
         <div className={`relative aspect-[16/9]`}>
-          <img
+          {photos?.length > 0 &&
+            photos.map((photo) => {
+              return (
+                <div key={photo}>
+                  <img src={photo} alt={photo} />
+                </div>
+              );
+            })}
+          {/* <img
             src={image}
             // fill
             className="rounded-t-2xl object-cover"
             alt="Property Photo"
-          />
+          /> */}
         </div>
         <div className="pointer-events-none absolute inset-0">
           <div className="from-transparent-5 bg-gradient-to-t flex h-full flex-col justify-between to-transparent px-5 py-5">

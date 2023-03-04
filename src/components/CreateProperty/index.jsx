@@ -39,6 +39,7 @@ import FormAlert from "../../components/FormAlert";
 import { categoryOptions } from "../../assets/categories";
 import { countryOptions } from "../../assets/countries";
 import { v4 as uuidv4 } from "uuid";
+import { BarLoader } from "react-spinners";
 
 import Head from "next/head";
 import React, { createRef, useState } from "react";
@@ -59,9 +60,6 @@ const CreateProperty = () => {
 
   const [image, setImage] = useState();
 
-  const [uploads, setUploads] = useState([]);
-  const [isUploading, setIsUploading] = useState(false);
-
   const [page, setPage] = useState(0);
   const [preview, setPreview] = useState();
   const [houses, setHouses] = useState("");
@@ -69,6 +67,10 @@ const CreateProperty = () => {
   // Testing data states (TO BE DELETED)
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
+
+  // Upload photos
+  const [uploads, setUploads] = useState([]);
+  const [isUploading, setIsUploading] = useState(false);
 
   function createProperty(event) {
     event.preventDefault();
@@ -78,14 +80,40 @@ const CreateProperty = () => {
         author: session.user.id,
         title,
         price,
+        photos: uploads,
       })
       .then((res) => {
         if (!res.error) {
           setTitle("");
           setPrice("");
+          setUploads([]);
           alert("Property Created");
         }
       });
+  }
+
+  // Add Property Photos
+  async function uploadPhotos(ev) {
+    const files = ev.target.files;
+    if (files.length > 0) {
+      setIsUploading(true);
+      for (const file of files) {
+        const newName = Date.now() + file.name;
+        const result = await supabase.storage
+          .from("photos")
+          .upload(newName, file);
+        if (result.data) {
+          const url =
+            process.env.NEXT_PUBLIC_SUPABASE_URL +
+            "/storage/v1/object/public/photos/" +
+            result.data.path;
+          setUploads((prevUploads) => [...prevUploads, url]);
+        } else {
+          console.log(result);
+        }
+      }
+      setIsUploading(false);
+    }
   }
 
   // RegEx for email and phone verification
@@ -109,28 +137,28 @@ const CreateProperty = () => {
   //   }
   // };
 
-  async function handleImageChange(ev) {
-    const files = ev.target.files;
-    if (files.length > 0) {
-      setIsUploading(true);
-      for (const file of files) {
-        const newName = Date.now() + file.name;
-        const result = await supabase.storage
-          .from("photos")
-          .upload(newName, file);
-        if (result.data) {
-          const url =
-            process.env.NEXT_PUBLIC_SUPABASE_URL +
-            "/storage/v1/object/public/photos/" +
-            result.data.path;
-          setUploads((prevUploads) => [...prevUploads, url]);
-        } else {
-          console.log(result);
-        }
-      }
-      setIsUploading(false);
-    }
-  }
+  // async function handleImageChange(ev) {
+  //   const files = ev.target.files;
+  //   if (files.length > 0) {
+  //     setIsUploading(true);
+  //     for (const file of files) {
+  //       const newName = Date.now() + file.name;
+  //       const result = await supabase.storage
+  //         .from("photos")
+  //         .upload(newName, file);
+  //       if (result.data) {
+  //         const url =
+  //           process.env.NEXT_PUBLIC_SUPABASE_URL +
+  //           "/storage/v1/object/public/photos/" +
+  //           result.data.path;
+  //         setUploads((prevUploads) => [...prevUploads, url]);
+  //       } else {
+  //         console.log(result);
+  //       }
+  //     }
+  //     setIsUploading(false);
+  //   }
+  // }
 
   // const uploadImage = async(imageData, estateData, toast) => {
 
@@ -193,6 +221,32 @@ const CreateProperty = () => {
         <h2 className="mb-5 text-xl text-slate-800">
           Enter Property Information below
         </h2>
+
+        {isUploading && (
+          <div>
+            <BarLoader />
+          </div>
+        )}
+
+        {uploads.length > 0 && (
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {uploads.map((upload) => (
+              <div key={upload}>
+                <img
+                  src={upload}
+                  alt="Upload"
+                  className="h-24 rounded-md object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        )}
+        <input
+          type="file"
+          multiple
+          placeholder="Upload property images"
+          onChange={uploadPhotos}
+        />
         <input
           value={title}
           onChange={(event) => setTitle(event.target.value)}

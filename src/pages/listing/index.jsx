@@ -42,12 +42,12 @@ const Listing = () => {
   useEffect(() => {
     supabase
       .from("houses")
-      .select()
+      .select("id, created_at, title, price, author, photos")
       .order("created_at", { ascending: false })
       .then((result) => {
         setProperties(result.data);
       });
-  }, []);
+  }, [supabase]);
 
   return (
     <section className="pb-20">
@@ -88,13 +88,15 @@ const Listing = () => {
             <div className="grid w-full gap-8 lg:w-8/12 lg:grid-cols-2">
               {/* <CreateProperty onPost={fetchHouses} /> */}
 
-              {properties.map((property) => {
-                return (
-                  <div key={property.id} className="bg-slate-700 text-white">
-                    <FeaturedListingCard {...property} />
-                  </div>
-                );
-              })}
+              {properties?.length > 0 &&
+                properties.map((property) => {
+                  return (
+                    <FeaturedListingCard
+                      key={property.created_at}
+                      {...property}
+                    />
+                  );
+                })}
 
               {/* {properties.map((property) => {
                 const { id } = property;

@@ -59,6 +59,7 @@
     "react-icons": "^4.7.1",
     "react-medium-image-zoom": "^5.1.2",
     "react-select": "^5.7.0",
+    "react-spinners": "^0.13.8",
     "styled-components": "^5.3.6",
     "superjson": "1.9.1",
     "use-web3forms": "^1.2.1",
