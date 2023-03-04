@@ -38,19 +38,20 @@ const SigninPage = () => {
       </p> */}
 
       <div className="mb-10 space-y-10">
-        <Link
-          href="/"
-          onClick={signInWithGoogle}
-          className=" mx-auto  flex items-center justify-between rounded-lg border border-slate-300 bg-white py-2 px-10 font-normal text-slate-900 hover:shadow-md lg:max-w-5xl"
-        >
-          <Image
-            src="/logos/google.svg"
-            alt="Google"
-            height={40}
-            width={40}
-            className="mr-2"
-          />
-          <span className="font-semibold">Continue with Google</span>
+        <Link href="/">
+          <button
+            onClick={signInWithGoogle}
+            className=" mx-auto  flex items-center justify-between rounded-lg border border-slate-300 bg-white py-2 px-10 font-normal text-slate-900 hover:shadow-md lg:max-w-5xl"
+          >
+            <Image
+              src="/logos/google.svg"
+              alt="Google"
+              height={40}
+              width={40}
+              className="mr-2"
+            />
+            <span className="font-semibold">Continue with Google</span>
+          </button>
         </Link>
 
         <div className="flex w-full items-center justify-between py-5">
