@@ -1,4 +1,5 @@
 export const countryOptions = [
+  { key: "opt", value: "Country", text: "Select your Country" },
   { key: "af", value: "Afghanistan", flag: "af", text: "Afghanistan" },
   { key: "ax", value: "Aland Islands", flag: "ax", text: "Aland Islands" },
   { key: "al", value: "Albania", flag: "al", text: "Albania" },

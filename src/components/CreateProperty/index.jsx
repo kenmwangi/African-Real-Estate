@@ -45,6 +45,14 @@ import Head from "next/head";
 import React, { createRef, useState } from "react";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 
+const appliances = [
+  { id: uuidv4(), title: "Heating" },
+  { id: uuidv4(), title: "Internet" },
+  { id: uuidv4(), title: "Furnitures" },
+  { id: uuidv4(), title: "Parking" },
+  { id: uuidv4(), title: "Flower Garden" },
+];
+
 const CreateProperty = () => {
   const supabase = useSupabaseClient();
   const session = useSession();
@@ -70,7 +78,7 @@ const CreateProperty = () => {
   const [status, setStatus] = useState("");
   const [address, setAddress] = useState("");
   const [county, setCounty] = useState("");
-  const [postal_code, setPostalCode] = useState(0);
+  const [postal_code, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
   const [category, setCategory] = useState("");
   const [bedrooms, setBedrooms] = useState(0);
@@ -260,7 +268,7 @@ const CreateProperty = () => {
     return { data, estateData, toast };
   };
   return (
-    <>
+    <div className="container">
       <Head>
         <title>Create Property Listing | African Real Estate</title>
       </Head>
@@ -268,28 +276,108 @@ const CreateProperty = () => {
       {/* testing data */}
 
       <form className="mb-20 grid gap-5">
-        <h2 className="mb-5 text-xl text-slate-800">
+        <h2 className="mb-10  text-lg font-semibold text-slate-800 lg:text-2xl xl:text-3xl">
           Enter Property Information below
         </h2>
-        <div class="group relative z-0 mb-6 w-full">
+        <div class="group relative z-0 mb-10 w-full">
           <input
             value={title}
             onChange={(event) => setTitle(event.target.value)}
             type="text"
             name="property title"
             id="propeprty title"
-            class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
+            class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-4 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
             placeholder=""
             required
           />
           <label
             for="property-title"
-            class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
           >
             Property Title
           </label>
         </div>
-        <div class="group relative z-0 mb-6 w-full">
+
+        {/* Category Options */}
+        <div class="group relative z-0 mb-10 w-full">
+          <label
+            for="category"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Select property Category
+          </label>
+          <select
+            id="category"
+            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+          >
+            {categoryOptions.map((category) => (
+              <option key={category.key} value={category.value}>
+                {category.text}
+              </option>
+            ))}
+          </select>
+        </div>
+        {/*Bedrooms */}
+        <div class="group relative z-0 mb-10 w-full">
+          <input
+            value={bedrooms}
+            onChange={(event) => setBedrooms(event.target.value)}
+            type="number"
+            name="bedrooms"
+            id="bedrooms"
+            placeholder=""
+            class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
+          />
+          <label
+            for="bedrooms"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+          >
+            Bedrooms
+          </label>
+        </div>
+
+        {/*Baths */}
+
+        <div class="group relative z-0 mb-10 w-full">
+          <input
+            value={baths}
+            onChange={(event) => setBaths(event.target.value)}
+            type="number"
+            name="baths"
+            id="baths"
+            placeholder=""
+            class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
+          />
+          <label
+            for="baths"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+          >
+            Baths
+          </label>
+        </div>
+
+        {/* Surface Area*/}
+
+        <div class="group relative z-0 mb-10 w-full">
+          <input
+            value={surface_area}
+            onChange={(event) => setSurfaceArea(event.target.value)}
+            type="number"
+            name="surface_area"
+            id="surface_area"
+            placeholder=""
+            class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
+          />
+          <label
+            for="surface_area"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+          >
+            Surface Area (sqft)
+          </label>
+        </div>
+
+        {/* Price */}
+        <div class="group relative z-0 mb-10 w-full">
           <input
             value={price}
             onChange={(event) => setPrice(event.target.value)}
@@ -300,93 +388,200 @@ const CreateProperty = () => {
             class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
           />
           <label
-            for="property-title"
-            class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+            for="price"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
           >
-            Price ($)
+            Price Quote ($)
           </label>
         </div>
-        <fieldset>
-          <legend className="sr-only">Status</legend>
-          <h2 className="text-semibold my-3 text-lg text-blue-600 lg:text-xl">
-            Status
-          </h2>
 
-          <div class="mb-4 flex items-center">
-            <input
-              id="rent"
-              type="radio"
-              name="status"
-              class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-blue-600 dark:focus:ring-blue-600"
-            />
-            <label
-              for="rent"
-              class="ml-2 block text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Rent
-            </label>
-          </div>
-          <div class="mb-4 flex items-center">
-            <input
-              id="sale"
-              type="radio"
-              name="status"
-              class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-blue-600 dark:focus:ring-blue-600"
-            />
-            <label
-              for="sale"
-              class="ml-2 block text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Sale
-            </label>
-          </div>
-        </fieldset>
+        {/* Status */}
+        <div class="group relative z-0 mb-10 w-full">
+          <fieldset>
+            <legend className="sr-only">Status</legend>
+            <legend className="mb-10">Status</legend>
+
+            <div class="mb-4 flex items-center">
+              <input
+                id="rent"
+                type="radio"
+                name="status"
+                class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-blue-600 dark:focus:ring-blue-600"
+              />
+              <label
+                for="rent"
+                class="ml-2 block text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                Rent
+              </label>
+            </div>
+            <div class="mb-4 flex items-center">
+              <input
+                id="sale"
+                type="radio"
+                name="status"
+                class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-blue-600 dark:focus:ring-blue-600"
+              />
+              <label
+                for="sale"
+                class="ml-2 block text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                Sale
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+        {/* Propert Description */}
+        <div class="group relative z-0 mb-10 w-full">
+          <label
+            for="message"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Property Information
+          </label>
+          <textarea
+            id="message"
+            rows="4"
+            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            placeholder="Write your brief Property Information here..."
+          ></textarea>
+        </div>
+
+        {/* Appliances */}
+
+        <h3>Property Appliances</h3>
+        <div class="mb-10 flex">
+          {appliances.map((appliance) => {
+            const { id, title } = appliance;
+            return (
+              <div key={id} class="mr-4 flex items-center">
+                <input
+                  id={title}
+                  type="checkbox"
+                  value=""
+                  class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+                />
+                <label
+                  for={title}
+                  class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                  {title}
+                </label>
+              </div>
+            );
+          })}
+        </div>
         {/* Address */}
-        <div class="group relative z-0 mb-6 w-full">
+        <div class="group relative z-0 mb-10 w-full">
           <input
             value={address}
             onChange={(event) => setAddress(event.target.value)}
-            type="number"
-            name="price"
-            id="price"
+            type="text"
+            name="address"
+            id="address"
             placeholder=""
-            class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
+            class="peer block w-full appearance-none border-0  border-b-2 border-gray-300 bg-transparent py-4 px-2 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
           />
           <label
-            for="property-title"
-            class="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+            for="address"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
           >
-            Price ($)
+            Address
           </label>
         </div>
-        {isUploading && (
-          <div>
-            <BarLoader />
-          </div>
-        )}
-        {uploads.length > 0 && (
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {uploads.map((upload) => (
-              <div key={upload}>
-                <img
-                  src={upload}
-                  alt="Upload"
-                  className="h-24 rounded-md object-cover"
-                />
-              </div>
+
+        {/** County State or Province */}
+
+        <div class="group relative z-0 mb-10 w-full">
+          <input
+            value={county}
+            onChange={(event) => setCounty(event.target.value)}
+            type="text"
+            name="county"
+            id="county"
+            placeholder=""
+            class="peer block w-full appearance-none border-0  border-b-2 border-gray-300 bg-transparent py-4 px-2 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
+          />
+          <label
+            for="county"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+          >
+            County/State/Province
+          </label>
+        </div>
+
+        {/* Postal Code */}
+
+        <div class="group relative z-0 mb-10 w-full">
+          <input
+            value={postal_code}
+            onChange={(event) => setPostalCode(event.target.value)}
+            type="text"
+            name="postal_code"
+            id="postal_code"
+            placeholder=""
+            class="peer block w-full appearance-none border-0  border-b-2 border-gray-300 bg-transparent py-4 px-2 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
+          />
+          <label
+            for="postal_code"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+          >
+            Postal Code
+          </label>
+        </div>
+
+        {/* Select A Country*/}
+        <div class="group relative z-0 mb-10 w-full">
+          <label
+            for="countries"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Select a Country
+          </label>
+          <select
+            id="countries"
+            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+          >
+            {countryOptions.map((country) => (
+              <option key={country.key} value={country.value}>
+                {country.text}
+              </option>
             ))}
-          </div>
-        )}
-        <input
-          type="file"
-          multiple
-          placeholder="Upload property images"
-          onChange={uploadPhotos}
-        />
+          </select>
+        </div>
+
+        {/* Image Uploads Functionality*/}
+        <section className="mb-10">
+          {isUploading && (
+            <div>
+              <BarLoader />
+            </div>
+          )}
+          {uploads.length > 0 && (
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {uploads.map((upload) => (
+                <div key={upload}>
+                  <img
+                    src={upload}
+                    alt="Upload"
+                    className="h-24 rounded-md object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+          <input
+            type="file"
+            multiple
+            placeholder="Upload property images"
+            onChange={uploadPhotos}
+          />
+        </section>
         <button
           onClick={createProperty}
           type="submit"
-          className="font-initial rounded-md bg-slate-700 p-3 text-xl text-white transition-colors hover:border-2 hover:border-slate-700 hover:bg-white hover:text-slate-700"
+          className="font-initial rounded-md border bg-slate-700 p-3 text-xl text-white transition-colors hover:border hover:border-slate-700 hover:bg-white hover:text-slate-700"
         >
           Submit Property
         </button>
@@ -898,7 +1093,7 @@ const CreateProperty = () => {
       //   </Stack>
       // </form>
       */}
-    </>
+    </div>
   );
 };
 
