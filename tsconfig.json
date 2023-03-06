@@ -39,10 +39,12 @@
     "src/pages/api/estate/[id].js",
     "src/components/Header.jsx",
     "src/pages/listing/index.jsx",
+    "src/pages/listing/[id]/[id].jsx",
     "src/components/CreateProperty/index.jsx",
     "src/pages/_document.jsx",
     "src/components/FormAlert/index.jsx",
     "src/pages/listing/index.jsx",
+    "src/pages/listing/[id]/index.jsx",
     "src/components/FeaturedListingCard.jsx",
     "src/components/FeaturedListing.jsx"
   ],

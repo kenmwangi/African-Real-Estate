@@ -16,6 +16,7 @@ import Link from "next/link";
 const FeaturedListingCard = (props) => {
   const {
     photos,
+    id,
     created_at,
     title,
     price,
@@ -26,8 +27,6 @@ const FeaturedListingCard = (props) => {
     county,
   } = props;
 
-  console.log(baths);
-  console.log(bedrooms);
   // const [isZoomed, setIsZoomed] = useState(false);
   return (
     <div className="overflow-hidden rounded-t-2xl border-b border-r border-l bg-white transition-all duration-150 ease-out hover:shadow-xl hover:shadow-gray-200">
@@ -100,7 +99,7 @@ const FeaturedListingCard = (props) => {
             {baths} {baths > 1 ? `Baths` : `Bath`}
           </div>
           <div className="flex h-full flex-1 items-center justify-end py-3 pr-4 text-gray-600">
-            <Link href="/listing/details">
+            <Link href={`/listing/${id}`}>
               <button className="ml-3 rounded-full bg-cyan-200 px-3 py-1.5 text-xs font-medium text-cyan-900 focus:outline-none">
                 Details
               </button>
