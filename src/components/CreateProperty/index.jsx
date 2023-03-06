@@ -33,7 +33,7 @@ import {
   CheckCircleIcon,
 } from "@chakra-ui/icons";
 import { useForm } from "react-hook-form";
-
+import { useRouter } from "next/router";
 import FormAlert from "../../components/FormAlert";
 
 import { categoryOptions } from "../../assets/categories";
@@ -59,6 +59,7 @@ const CreateProperty = () => {
 
   const imageInputRef = createRef();
   const toast = useToast();
+  const router = useRouter();
 
   const {
     register,
@@ -74,16 +75,16 @@ const CreateProperty = () => {
 
   // Testing data states (TO BE DELETED)
   const [title, setTitle] = useState("");
-  const [price, setPrice] = useState(0);
   const [status, setStatus] = useState("");
   const [address, setAddress] = useState("");
   const [county, setCounty] = useState("");
   const [postal_code, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
   const [category, setCategory] = useState("");
-  const [bedrooms, setBedrooms] = useState(0);
-  const [baths, setBaths] = useState(0);
-  const [surface_area, setSurfaceArea] = useState(0);
+  const [price, setPrice] = useState(null);
+  const [bedrooms, setBedrooms] = useState(null);
+  const [baths, setBaths] = useState(null);
+  const [surface_area, setSurfaceArea] = useState(null);
   const [property_briefing, setPropertyBriefing] = useState("");
   const [additional_info, setAdditionalInfo] = useState("");
   const [checked, setChecked] = useState([]);
@@ -123,6 +124,7 @@ const CreateProperty = () => {
           setPrice("");
           setStatus("");
           setAddress("");
+          setEmail("");
 
           // uploads for photos
           setUploads([]);
@@ -134,7 +136,7 @@ const CreateProperty = () => {
             duration: 5000,
             isClosable: true,
           });
-          return;
+          return router.push("/buy");
         }
       });
   }
@@ -286,13 +288,13 @@ const CreateProperty = () => {
             type="text"
             name="property title"
             id="propeprty title"
-            class="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-4 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
+            class="peer -bottom-5 block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-4 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0"
             placeholder=""
             required
           />
           <label
             for="property-title"
-            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600"
           >
             Property Title
           </label>
@@ -302,13 +304,15 @@ const CreateProperty = () => {
         <div class="group relative z-0 mb-10 w-full">
           <label
             for="category"
-            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            class="mb-2 block text-sm font-medium text-gray-900 "
           >
             Select property Category
           </label>
           <select
             id="category"
-            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            onChange={(event) => setCategory(event.target.value)}
+            value={category}
+            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
           >
             {categoryOptions.map((category) => (
               <option key={category.key} value={category.value}>
@@ -321,7 +325,7 @@ const CreateProperty = () => {
         <div class="group relative z-0 mb-10 w-full">
           <input
             value={bedrooms}
-            onChange={(event) => setBedrooms(event.target.value)}
+            onChange={(event) => setBedrooms(+event.target.value)}
             type="number"
             name="bedrooms"
             id="bedrooms"
@@ -330,7 +334,7 @@ const CreateProperty = () => {
           />
           <label
             for="bedrooms"
-            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 "
           >
             Bedrooms
           </label>
@@ -341,7 +345,7 @@ const CreateProperty = () => {
         <div class="group relative z-0 mb-10 w-full">
           <input
             value={baths}
-            onChange={(event) => setBaths(event.target.value)}
+            onChange={(event) => setBaths(+event.target.value)}
             type="number"
             name="baths"
             id="baths"
@@ -350,7 +354,7 @@ const CreateProperty = () => {
           />
           <label
             for="baths"
-            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600"
           >
             Baths
           </label>
@@ -361,7 +365,7 @@ const CreateProperty = () => {
         <div class="group relative z-0 mb-10 w-full">
           <input
             value={surface_area}
-            onChange={(event) => setSurfaceArea(event.target.value)}
+            onChange={(event) => setSurfaceArea(+event.target.value)}
             type="number"
             name="surface_area"
             id="surface_area"
@@ -370,7 +374,7 @@ const CreateProperty = () => {
           />
           <label
             for="surface_area"
-            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 "
           >
             Surface Area (sqft)
           </label>
@@ -380,7 +384,7 @@ const CreateProperty = () => {
         <div class="group relative z-0 mb-10 w-full">
           <input
             value={price}
-            onChange={(event) => setPrice(event.target.value)}
+            onChange={(event) => setPrice(+event.target.value)}
             type="number"
             name="price"
             id="price"
@@ -389,7 +393,7 @@ const CreateProperty = () => {
           />
           <label
             for="price"
-            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+            class="absolute top-1 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 "
           >
             Price Quote ($)
           </label>
@@ -406,6 +410,8 @@ const CreateProperty = () => {
                 id="rent"
                 type="radio"
                 name="status"
+                value={status}
+                onChange={(event) => setStatus(event.target.value)}
                 class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-blue-600 dark:focus:ring-blue-600"
               />
               <label
@@ -420,6 +426,8 @@ const CreateProperty = () => {
                 id="sale"
                 type="radio"
                 name="status"
+                value={status}
+                onChange={(event) => setStatus(event.target.value)}
                 class="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-blue-600 dark:focus:ring-blue-600"
               />
               <label
@@ -436,14 +444,16 @@ const CreateProperty = () => {
         <div class="group relative z-0 mb-10 w-full">
           <label
             for="message"
-            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+            class="mb-2 block text-sm font-medium text-gray-900 "
           >
             Property Information
           </label>
           <textarea
+            value={property_briefing}
+            onChange={(event) => setPropertyBriefing(event.target.value)}
             id="message"
             rows="4"
-            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
             placeholder="Write your brief Property Information here..."
           ></textarea>
         </div>
@@ -459,8 +469,9 @@ const CreateProperty = () => {
                 <input
                   id={title}
                   type="checkbox"
-                  value=""
-                  class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
+                  onChange={handleCheck}
+                  value={title}
+                  class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 "
                 />
                 <label
                   for={title}
@@ -540,6 +551,8 @@ const CreateProperty = () => {
             Select a Country
           </label>
           <select
+            value={country}
+            onChange={(event) => setCountry(event.target.value)}
             id="countries"
             class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
           >
@@ -551,8 +564,62 @@ const CreateProperty = () => {
           </select>
         </div>
 
+        {/* Contact Information */}
+
+        <label
+          for="email"
+          class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+        >
+          Contact Email
+        </label>
+        <div class="relative mb-6">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <svg
+              aria-hidden="true"
+              class="h-5 w-5 text-gray-500 dark:text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+            </svg>
+          </div>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            placeholder="yourname@email.com"
+          />
+        </div>
+
+        <div>
+          <label
+            for="phone"
+            class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Phone number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            value={telephone}
+            onChange={(event) => setTelephone(event.target.value)}
+            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            placeholder="+25471xxxxxxx"
+            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+            required
+          />
+        </div>
+
         {/* Image Uploads Functionality*/}
         <section className="mb-10">
+          <h1 className="my-5">
+            Please select HD images of your property.{" "}
+            <strong>NB: Max Size (5MB)</strong>
+          </h1>
           {isUploading && (
             <div>
               <BarLoader />

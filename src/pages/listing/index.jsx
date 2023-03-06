@@ -6,33 +6,6 @@ import FilterProperty from "src/components/Filter";
 import GenericHero from "src/components/GenericHero";
 import SigninPage from "../auth/signin";
 
-const properties = [
-  //   {
-  //     id: 5,
-  //     name: "2 BHK Villa",
-  //     price: "$140,650",
-  //     image: "/photos/property5.jpg",
-  //     type: "Buy",
-  //     location: "Karen",
-  //     beds: "2",
-  //     baths: "2",
-  //     area: "2,000 SF",
-  //   },
-  //   {
-  //     id: 6,
-  //     name: "1 BHK Independent House",
-  //     price: "$1499",
-  //     image: "/photos/property6.jpg",
-  //     type: "Buy",
-  //     location: "Kilimani",
-  //     beds: "1",
-  //     baths: "1",
-  //     area: "1,000 SF",
-  //   },
-];
-
-// This is listing men!
-
 const Listing = () => {
   const session = useSession();
   const supabase = useSupabaseClient();
@@ -42,7 +15,9 @@ const Listing = () => {
   useEffect(() => {
     supabase
       .from("houses")
-      .select("id, created_at, title, price, author, photos")
+      .select(
+        "id, created_at, title, price, author, photos, status, address, country, postal_code, county, category, bedrooms, baths, surface_area, property_briefing, additional_info, appliances, email, telephone"
+      )
       .order("created_at", { ascending: false })
       .then((result) => {
         setProperties(result.data);
