@@ -46,6 +46,7 @@
     "src/pages/listing/index.jsx",
     "src/pages/listing/[id]/index.jsx",
     "src/components/FeaturedListingCard.jsx",
+    "src/components/SingleListingCard.jsx",
     "src/components/FeaturedListing.jsx"
   ],
   "exclude": ["node_modules"]

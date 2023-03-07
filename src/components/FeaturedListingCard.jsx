@@ -106,7 +106,7 @@ const FeaturedListingCard = (props) => {
             </Link>
           </div>
         </div>
-        <Link href="/listing/details" className="absolute inset-0"></Link>
+        <Link href={`/listing/${id}`} className="absolute inset-0"></Link>
       </div>
     </div>
   );
