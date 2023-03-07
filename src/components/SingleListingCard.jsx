@@ -1,3 +1,4 @@
+"use client";
 import GenericHero from "./GenericHero";
 import { useState, useEffect } from "react";
 import FeaturedListingCard from "./FeaturedListingCard";
@@ -16,15 +17,31 @@ import {
 } from "react-icons/bi";
 // import { supabase } from "src/services/supabase";
 import Head from "next/head";
+import Button from "./Button";
+import { useRouter } from "next/router";
+import SigninPage from "src/pages/auth/signin";
 
 const SingleListingCard = ({ house }) => {
   const session = useSession();
   const supabase = useSupabaseClient();
+  const router = useRouter();
 
   const [properties, setProperties] = useState([]);
+  // show mobile phone
+  const [showMobile, setShowMobile] = useState(false);
+
+  // Check if user is logged in
 
   //   Max Display in Related Properties section
   const MAX_DISPLAY = 3;
+
+  // Copy Email to clipboard
+
+  function copyEmail(text) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+    }
+  }
 
   useEffect(() => {
     supabase
@@ -41,10 +58,10 @@ const SingleListingCard = ({ house }) => {
   return (
     <div>
       <Head>
-        <title>African Real Estate | House</title>
+        <title>African Real Estate | {house?.title ?? "House"}</title>
         <meta
           name="description"
-          content="Own this property at an afford rate"
+          content="Own this property at an afford price"
         />
       </Head>
       <GenericHero
@@ -104,14 +121,65 @@ const SingleListingCard = ({ house }) => {
               </div> */}
             </div>
 
-            <div className="flex flex-col space-y-6 md:flex-row md:items-end md:space-x-6 md:space-y-0">
-              <button className="rounded-full bg-cyan-100 px-8 py-4 font-medium text-cyan-500 focus:outline-none">
-                Request Callback
-              </button>
-              <button className="rounded-full bg-lime-500 px-8 py-4 font-medium text-white focus:outline-none">
-                Book Now
-              </button>
-            </div>
+            {!session ? (
+              <>
+                <div className="fixed inset-0 top-0 left-0 right-0 z-50 h-[calc(100%-1rem)] overflow-y-auto overflow-x-hidden pt-10 md:h-full">
+                  <SigninPage />
+                </div>
+              </>
+            ) : (
+              <div className="flex flex-col space-y-6 md:flex-row md:items-end md:space-x-6 md:space-y-0">
+                <button
+                  onClick={(event) => setShowMobile((p) => !p)}
+                  className="flex items-center justify-center gap-4 rounded-full bg-indigo-400 px-8 py-4 font-medium text-white focus:outline-none"
+                >
+                  {showMobile ? (
+                    <p className="text-lg font-semibold lg:text-xl">
+                      {house?.telephone}
+                    </p>
+                  ) : (
+                    <>
+                      <Image
+                        src="/images/phone-icon.svg"
+                        width={15}
+                        height={15}
+                        alt="Phone Icon"
+                      />
+                      <span className="text-lg font-semibold lg:text-xl">
+                        View Phone
+                      </span>
+                    </>
+                  )}
+                </button>
+
+                <button
+                  onClick={(event) => {
+                    copyEmail(house?.email);
+                    alert(`${house.email} successfully copied to clipboard!`);
+                  }}
+                  className="flex items-center gap-4 rounded-full bg-indigo-400 px-8 py-4 font-medium text-white focus:outline-none"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+                    />
+                  </svg>
+
+                  <span className="text-lg font-semibold lg:text-xl">
+                    Copy Email
+                  </span>
+                </button>
+              </div>
+            )}
           </div>
 
           <div>
