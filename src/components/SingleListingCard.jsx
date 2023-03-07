@@ -70,9 +70,9 @@ const SingleListingCard = ({ house }) => {
       />
       <div className="px-6 py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="space-y-6 md:flex md:justify-between md:space-x-12 md:space-y-0">
+          <div className="space-y-6 md:flex md:items-center md:justify-between md:space-x-12 md:space-y-0">
             <div className="mb-10 flex flex-1 space-x-8">
-              <div className="flex flex-col gap-8 lg:items-end lg:space-x-5">
+              <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:space-x-5">
                 <div className="flex flex-col">
                   <span className="mb-2 text-sm font-semibold uppercase text-gray-600">
                     Price
