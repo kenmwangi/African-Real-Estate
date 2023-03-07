@@ -72,7 +72,7 @@ const SingleListingCard = ({ house }) => {
         <div className="mx-auto max-w-6xl">
           <div className="space-y-6 md:flex md:justify-between md:space-x-12 md:space-y-0">
             <div className="flex flex-1 space-x-8">
-              <div className="flex items-end space-x-5">
+              <div className="flex flex-col gap-8 lg:items-end lg:space-x-5">
                 <div className="flex flex-col">
                   <span className="mb-2 text-sm font-semibold uppercase text-gray-600">
                     Price
@@ -91,8 +91,8 @@ const SingleListingCard = ({ house }) => {
                 </div>
                 {/* <div className="flex h-full items-end text-xl">+</div>
                  */}
-                <div className="w-px bg-gray-200"></div>
-                <div className="flex flex-col font-semibold">
+                {/* <div className="w-px bg-gray-200"></div> */}
+                <div className="flex-start flex flex-col font-semibold">
                   <span className="mb-2 text-sm font-semibold uppercase text-gray-600">
                     Floor Location
                   </span>
@@ -150,7 +150,7 @@ const SingleListingCard = ({ house }) => {
                   copyEmail(house?.email);
                   alert(`${house.email} successfully copied to clipboard!`);
                 }}
-                className="flex items-center gap-4 rounded-full bg-indigo-400 px-8 py-4 font-medium text-white focus:outline-none"
+                className="flex items-center justify-center gap-4 rounded-full bg-indigo-400 px-8 py-4 font-medium text-white focus:outline-none"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
