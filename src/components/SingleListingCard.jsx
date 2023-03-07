@@ -123,7 +123,7 @@ const SingleListingCard = ({ house }) => {
 
             {!session ? (
               <>
-                <div className="fixed inset-0 top-0 left-0 right-0 z-50 h-[calc(100%-1rem)] overflow-y-auto overflow-x-hidden pt-10 md:h-full">
+                <div className="fixed inset-0 top-0 left-0 right-0 z-50 h-[calc(100%-1rem)] pt-10 md:h-full">
                   <SigninPage />
                 </div>
               </>
