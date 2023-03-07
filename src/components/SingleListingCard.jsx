@@ -71,7 +71,7 @@ const SingleListingCard = ({ house }) => {
       <div className="px-6 py-20">
         <div className="mx-auto max-w-6xl">
           <div className="space-y-6 md:flex md:justify-between md:space-x-12 md:space-y-0">
-            <div className="flex flex-1 space-x-8">
+            <div className="mb-10 flex flex-1 space-x-8">
               <div className="flex flex-col gap-8 lg:items-end lg:space-x-5">
                 <div className="flex flex-col">
                   <span className="mb-2 text-sm font-semibold uppercase text-gray-600">
@@ -121,7 +121,7 @@ const SingleListingCard = ({ house }) => {
               </div> */}
             </div>
 
-            <div className="flex flex-col space-y-6 md:flex-row md:items-end md:space-x-6 md:space-y-0">
+            <div className=" flex flex-col space-y-6 md:flex-row md:items-end md:space-x-6 md:space-y-0">
               <button
                 onClick={(event) => setShowMobile((p) => !p)}
                 className="flex items-center justify-center gap-4 rounded-full bg-indigo-400 px-8 py-4 font-medium text-white focus:outline-none"
