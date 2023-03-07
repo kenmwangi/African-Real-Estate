@@ -60,7 +60,12 @@ const FeaturedListingCard = (props) => {
                 Buy
               </span>
             </div>
-            <span className="text-2xl font-semibold text-white">{price}</span>
+            <span className="text-2xl font-semibold text-white">
+              {price.toLocaleString("en-US", {
+                style: "currency",
+                currency: "KES",
+              })}
+            </span>
           </div>
           <button
             onClick={(e) => {
@@ -86,7 +91,17 @@ const FeaturedListingCard = (props) => {
       <div className="relative">
         <div className="px-5 py-5">
           <h4 className="text-lg font-semibold text-black">{title}</h4>
-          <p className="mt-1 text-sm text-gray-500">{county}</p>
+          <p className="mt-1 flex items-center gap-1 text-sm text-gray-500">
+            <span>
+              <Image
+                src="/images/map-icon.svg"
+                width={15}
+                height={15}
+                alt="Map Icon"
+              />
+            </span>
+            <span className="flex-end">{county}</span>
+          </p>
         </div>
         <div className="flex divide-x divide-gray-200 border-t border-gray-100 text-sm">
           <div className="flex flex-1 items-center justify-center px-2 py-3 text-gray-500">

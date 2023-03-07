@@ -4,12 +4,14 @@ import { Inter } from "@next/font/google";
 
 import FeaturedListingCard from "./FeaturedListingCard";
 import Button from "./Button";
-
+import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 const FeaturedListing = () => {
   const session = useSession();
   const supabase = useSupabaseClient();
+
+  const MAX_DISPLAY = 6;
 
   const [properties, setProperties] = useState([]);
 
@@ -34,7 +36,7 @@ const FeaturedListing = () => {
 
         <div className="mt-10">
           <article className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
-            {properties.map((property) => {
+            {properties.slice(0, MAX_DISPLAY).map((property) => {
               return (
                 <FeaturedListingCard key={property.created_at} {...property} />
               );
@@ -42,7 +44,9 @@ const FeaturedListing = () => {
           </article>
 
           <article className="my-10 text-center">
-            <Button>View All</Button>
+            <Link href="/buy">
+              <Button>View All</Button>
+            </Link>
           </article>
         </div>
       </div>

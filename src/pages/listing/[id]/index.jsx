@@ -7,7 +7,7 @@ const SingleListing = ({ house }) => {
   console.log(house);
   return (
     <>
-      <Head>{house?.title}</Head>
+      <Head>{house.title}</Head>
       <SingleListingCard house={house} />
     </>
   );

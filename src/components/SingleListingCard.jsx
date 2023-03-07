@@ -56,31 +56,41 @@ const SingleListingCard = ({ house }) => {
           <div className="space-y-6 md:flex md:justify-between md:space-x-12 md:space-y-0">
             <div className="flex flex-1 space-x-8">
               <div className="flex items-end space-x-5">
-                <div className="flex flex-row items-center gap-6">
+                <div className="flex flex-col">
                   <span className="mb-2 text-sm font-semibold uppercase text-gray-600">
                     Price
                   </span>
                   <span className="flex items-baseline text-4xl font-semibold text-red-400">
-                    <span>{house?.price} </span>
+                    <span>
+                      {house?.price.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "KES",
+                      })}{" "}
+                    </span>
                     {/* <sup className="-top-0.5 pl-1 text-xs text-gray-500">
                       /MO
                     </sup> */}
                   </span>
                 </div>
                 {/* <div className="flex h-full items-end text-xl">+</div>
+                 */}
+                <div className="w-px bg-gray-200"></div>
                 <div className="flex flex-col font-semibold">
                   <span className="mb-2 text-sm font-semibold uppercase text-gray-600">
-                    Maintenance
+                    Floor Location
                   </span>
                   <span className="text-4xl text-red-400">
-                    <span>$75</span>
-                    <sup className="-top-0.5 pl-1 text-xs text-gray-500 ">
+                    {/* <span>
+                      {new Date(house.created_at).toLocaleDateString()}
+                    </span> */}
+                    <span>{house.surface_area} sqft</span>
+                    {/* <sup className="-top-0.5 pl-1 text-xs text-gray-500 ">
                       /MO
-                    </sup>
+                    </sup> */}
                   </span>
-                </div> */}
+                </div>
               </div>
-              {/* <div className="w-px bg-gray-200"></div>
+              {/* 
               <div className="flex flex-col">
                 <span className="mb-2 text-sm font-semibold uppercase text-gray-600">
                   Deposit
@@ -287,38 +297,5 @@ const SingleListingCard = ({ house }) => {
     </div>
   );
 };
-
-const property = [
-  {
-    name: "2 BHK Villa",
-    price: "$140,650",
-    image: "/photos/property2.jpg",
-    type: "Buy",
-    location: "Los Angeles",
-    beds: "2",
-    baths: "2",
-    area: "2,000 SF",
-  },
-  {
-    name: "1 BHK Independent House",
-    price: "$1499",
-    image: "/photos/property3.jpg",
-    type: "Rent",
-    location: "San Francisco",
-    beds: "1",
-    baths: "1",
-    area: "1,000 SF",
-  },
-  {
-    name: "2 BHK Apartment",
-    price: "$2999",
-    image: "/photos/property4.jpg",
-    type: "Rent",
-    location: "Los Angeles",
-    beds: "2",
-    baths: "2",
-    area: "2,000 SF",
-  },
-];
 
 export default SingleListingCard;
