@@ -37,10 +37,6 @@ const SellPage = () => {
         <div>
           {/* <GenericHero title="Sell you Property Fast" /> */}
 
-          {/* <p className="mt-3 text-center text-sm text-gray-500 md:text-lg">
-            Choose the best pricing plan that suits you
-          </p> */}
-
           <div className="mx-auto max-w-screen-xl py-8 px-4 sm:py-16 lg:px-6">
             <div className="mx-auto max-w-screen-sm text-center">
               <h2 className="mb-4 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">
