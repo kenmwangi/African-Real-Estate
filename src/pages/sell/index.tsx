@@ -35,18 +35,30 @@ const SellPage = () => {
       <section className="mb-20 flex flex-col  items-center justify-center pb-20">
         {/* <div className="absolute inset-0 bg-[url(/img/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div> */}
         <div>
-          <GenericHero title="Sell you Property Fast" />
+          {/* <GenericHero title="Sell you Property Fast" /> */}
 
-          <p className="mt-3 text-center text-sm text-gray-500 md:text-lg">
+          {/* <p className="mt-3 text-center text-sm text-gray-500 md:text-lg">
             Choose the best pricing plan that suits you
-          </p>
-          <Link
-            href="/sell/sell-your-property"
-            className="text-3xl text-red-400 hover:text-red-600"
-          >
-            Sell Your Property
-          </Link>
-          <div className="mx-auto mt-7 max-w-7xl overflow-x-auto bg-white px-5 md:rounded-md md:shadow-sm lg:mt-10 lg:block">
+          </p> */}
+
+          <div className="mx-auto max-w-screen-xl py-8 px-4 sm:py-16 lg:px-6">
+            <div className="mx-auto max-w-screen-sm text-center">
+              <h2 className="mb-4 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">
+                Start your free trial today
+              </h2>
+              <p className="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">
+                Try African Real Estate Platform for 30 days. No credit card
+                required.
+              </p>
+              <Link
+                href="/sell/sell-your-property"
+                className="mr-2 mb-2  rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+              >
+                Sell Your Property
+              </Link>
+            </div>
+          </div>
+          {/* <div className="mx-auto mt-7 max-w-7xl overflow-x-auto bg-white px-5 md:rounded-md md:shadow-sm lg:mt-10 lg:block">
             <table className="whitespace-no-wrap mt-10 w-full table-fixed text-left">
               <thead>
                 <tr className="block md:table-row">
@@ -89,7 +101,7 @@ const SellPage = () => {
 
           <div className="my-10 text-center text-sm text-gray-500">
             We promise 100% price honesty. No hidden charges.
-          </div>
+          </div> */}
         </div>
       </section>
     </>
