@@ -63,15 +63,14 @@ const Listing = () => {
             <div className="grid w-full gap-8 lg:w-8/12 lg:grid-cols-2">
               {/* <CreateProperty onPost={fetchHouses} /> */}
 
-              {properties?.length > 0 &&
-                properties.map((property) => {
-                  return (
-                    <FeaturedListingCard
-                      key={property.created_at}
-                      {...property}
-                    />
-                  );
-                })}
+              {properties.map((property) => {
+                return (
+                  <FeaturedListingCard
+                    key={property.created_at}
+                    {...property}
+                  />
+                );
+              })}
 
               {/* {properties.map((property) => {
                 const { id } = property;

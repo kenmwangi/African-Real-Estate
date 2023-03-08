@@ -592,6 +592,8 @@ const CreateProperty = () => {
             onChange={(event) => setEmail(event.target.value)}
             class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder="yourname@email.com"
+            pattern={emailPattern}
+            required
           />
         </div>
 
@@ -609,7 +611,7 @@ const CreateProperty = () => {
             onChange={(event) => setTelephone(event.target.value)}
             class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder="+25471xxxxxxx"
-            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+            pattern={numericPattern}
             required
           />
         </div>

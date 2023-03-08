@@ -65,8 +65,8 @@ const SingleListingCard = ({ house }) => {
         />
       </Head>
       <GenericHero
-        title={house?.title}
-        description={`${house?.county}, ${house?.country}`}
+        title={house.title}
+        description={`${house.county}, ${house.country}`}
       />
       <div className="px-6 py-20">
         <div className="mx-auto max-w-6xl">
