@@ -50,6 +50,7 @@
     "src/pages/search/index.jsx",
     "src/pages/listing/page/[page].jsx",
     "src/components/FeaturedListingCard.jsx",
+    "src/components/Hero.jsx",
     "src/components/SingleListingCard.jsx",
     "src/components/FeaturedListing.jsx",
     "src/components/SearchInputs.jsx",
