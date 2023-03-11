@@ -180,7 +180,7 @@ const Hero = () => {
               </div> */}
             <section className="mt-5 flex justify-end pr-4">
               <Link
-                href="/listing"
+                href="/search"
                 className="border-b border-blue-700 text-sm font-medium text-blue-600 transition-colors hover:text-cyan-500"
               >
                 Advanced Search
