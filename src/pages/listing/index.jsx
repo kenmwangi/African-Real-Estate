@@ -3,14 +3,27 @@ import React, { useEffect, useState } from "react";
 import CreateProperty from "src/components/CreateProperty";
 import FeaturedListingCard from "src/components/FeaturedListingCard";
 import FilterProperty from "src/components/Filter";
+import FilterListing from "src/components/FilterListing";
 import GenericHero from "src/components/GenericHero";
+import Pagination from "src/components/Pagination";
+import ListLayout from "src/layouts/ListLayout";
 import SigninPage from "../auth/signin";
+
+const POSTS_PER_PAGE = 6;
 
 const Listing = () => {
   const session = useSession();
   const supabase = useSupabaseClient();
 
   const [properties, setProperties] = useState([]);
+
+  // Pagination
+  const [currentPage, setcurrentPage] = useState(1);
+  const pageSize = 1;
+
+  const onPageChange = (page) => {
+    setcurrentPage(page);
+  };
 
   useEffect(() => {
     supabase
@@ -25,44 +38,16 @@ const Listing = () => {
   }, [supabase]);
 
   return (
-    <section className="pb-20">
+    <section className="mb-10 pb-20">
       <GenericHero title="Property Listing" />
       <div className="px-6 py-8">
         <div className="mx-auto max-w-6xl">
-          <div className="flex">
-            <div className="mb:block hidden flex-1">{/* space div */}</div>
-            <div className="flex-1">
-              <h2 className="mb-10 text-2xl font-medium uppercase leading-10">
-                Featured Listing
-              </h2>
-            </div>
-
-            <article className="hidden flex-1 items-center justify-end space-x-4 md:flex">
-              <select
-                id="type"
-                name="type"
-                className="w-44 rounded-full border border-gray-200 bg-gray-50 py-2 px-6"
-              >
-                <option value="">Select service</option>
-                <option>Rent</option>
-                <option>Sell</option>
-              </select>
-              <select
-                id="type"
-                name="type"
-                className="w-44 rounded-full border border-gray-200 bg-gray-50 py-2 px-6"
-              >
-                <option>Newest First</option>
-              </select>
-            </article>
-          </div>
-          <article className="mt-8 lg:flex">
-            <div className="w-full lg:w-4/12 lg:pr-8">
+          <FilterListing />
+          <article>
+            {/* <div className="w-full lg:w-4/12 lg:pr-8">
               <FilterProperty />
-            </div>
-            <div className="grid w-full gap-8 lg:w-8/12 lg:grid-cols-2">
-              {/* <CreateProperty onPost={fetchHouses} /> */}
-
+            </div> */}
+            <div className="my-10 grid w-full gap-8 lg:grid-cols-3">
               {properties.map((property) => {
                 return (
                   <FeaturedListingCard
@@ -71,12 +56,14 @@ const Listing = () => {
                   />
                 );
               })}
-
-              {/* {properties.map((property) => {
-                const { id } = property;
-              })} */}
             </div>
           </article>
+          <Pagination
+            items={properties.length}
+            currentPage={currentPage}
+            pageSize={pageSize}
+            onPageChange={onPageChange}
+          />
         </div>
       </div>
     </section>
@@ -84,3 +71,32 @@ const Listing = () => {
 };
 
 export default Listing;
+
+export async function getStaticPaths() {
+  const totalListing = await supabase.from("houses").select("*");
+  const totalPages = Math.ceil(totalListing.length / POSTS_PER_PAGE);
+  const paths = Array.from({ length: totalPages }, (_, i) => ({
+    params: { page: (i + 1).toString() },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+export async function getStaticProps() {
+  const listings = await supabase.from("houses").select("*");
+  const initialDisplayListings = listings.slice(0, POSTS_PER_PAGE);
+  const pagination = {
+    currentPage: 1,
+    totalPages: Math.ceil(listings.length / POSTS_PER_PAGE),
+  };
+
+  return {
+    props: {
+      listings,
+      initialDisplayListings,
+      pagination,
+    },
+  };
+}

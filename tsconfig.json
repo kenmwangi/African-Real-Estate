@@ -42,13 +42,19 @@
     "src/pages/listing/[id]/[id].jsx",
     "src/components/CreateProperty/index.jsx",
     "src/pages/_document.jsx",
+    "src/utils/paginate.js",
     "src/components/FormAlert/index.jsx",
+    "src/components/SearchFilters.jsx",
     "src/pages/listing/index.jsx",
     "src/pages/listing/[id]/index.jsx",
+    "src/pages/search/index.jsx",
+    "src/pages/listing/page/[page].jsx",
     "src/components/FeaturedListingCard.jsx",
     "src/components/SingleListingCard.jsx",
     "src/components/FeaturedListing.jsx",
-    "src/components/SearchInputs.jsx"
+    "src/components/SearchInputs.jsx",
+    "src/components/Pagination/index.jsx",
+    "src/layouts/ListLayout.jsx"
   ],
   "exclude": ["node_modules"]
 }

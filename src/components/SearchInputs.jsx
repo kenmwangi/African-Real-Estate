@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const SearchInputs = () => {
-  const [inputPrice, setInputPrice] = useState({ min: 0, max: 0 });
+  
   return (
     <div>
       <form

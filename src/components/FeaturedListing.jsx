@@ -18,9 +18,10 @@ const FeaturedListing = () => {
   useEffect(() => {
     supabase
       .from("houses")
-      .select(
-        "id, created_at, title, price, author, photos, status, address, country, postal_code, county, category, bedrooms, baths, surface_area, property_briefing, additional_info, appliances, email, telephone"
-      )
+      .select("*")
+      // .select(
+      //   "id, created_at, title, price, author, photos, status, address, country, postal_code, county, category, bedrooms, baths, surface_area, property_briefing, additional_info, appliances, email, telephone"
+      // )
       .order("created_at", { ascending: false })
       .then((result) => {
         setProperties(result.data);
@@ -36,7 +37,7 @@ const FeaturedListing = () => {
 
         <div className="mt-10">
           <article className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
-            {properties.slice(0, MAX_DISPLAY).map((property) => {
+            {properties?.slice(0, MAX_DISPLAY).map((property) => {
               return (
                 <FeaturedListingCard key={property.created_at} {...property} />
               );

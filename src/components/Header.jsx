@@ -63,7 +63,7 @@ function Header() {
       .select()
       .eq("id", session.user.id)
       .then((result) => {
-        if (result.data.length) {
+        if (result.data?.length) {
           setProfile(result.data[0]);
         }
       });
