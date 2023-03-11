@@ -58,12 +58,12 @@ const Listing = () => {
               })}
             </div>
           </article>
-          <Pagination
+          {/* <Pagination
             items={properties.length}
             currentPage={currentPage}
             pageSize={pageSize}
             onPageChange={onPageChange}
-          />
+          /> */}
         </div>
       </div>
     </section>
@@ -71,32 +71,3 @@ const Listing = () => {
 };
 
 export default Listing;
-
-export async function getStaticPaths() {
-  const totalListing = await supabase.from("houses").select("*");
-  const totalPages = Math.ceil(totalListing.length / POSTS_PER_PAGE);
-  const paths = Array.from({ length: totalPages }, (_, i) => ({
-    params: { page: (i + 1).toString() },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-export async function getStaticProps() {
-  const listings = await supabase.from("houses").select("*");
-  const initialDisplayListings = listings.slice(0, POSTS_PER_PAGE);
-  const pagination = {
-    currentPage: 1,
-    totalPages: Math.ceil(listings.length / POSTS_PER_PAGE),
-  };
-
-  return {
-    props: {
-      listings,
-      initialDisplayListings,
-      pagination,
-    },
-  };
-}
